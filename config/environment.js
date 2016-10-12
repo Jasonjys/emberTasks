@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'ember-tasks',
+    podModulePrefix: 'ember-tasks/pods',
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
