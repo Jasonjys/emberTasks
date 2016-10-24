@@ -4,6 +4,13 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'ember-tasks',
     podModulePrefix: 'ember-tasks/pods',
+    firebase: {
+      apiKey: "AIzaSyAYnUjxNFQU--AFhBsFKK9hh0D9-JJP6Jo",
+      authDomain: "embertasks-b34ae.firebaseapp.com",
+      databaseURL: "https://embertasks-b34ae.firebaseio.com",
+      storageBucket: "embertasks-b34ae.appspot.com"
+      //messagingSenderId: "1091796089031"
+    },
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
