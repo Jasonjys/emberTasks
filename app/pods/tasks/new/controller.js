@@ -18,14 +18,10 @@ export default Ember.Controller.extend({
   actions: {
     addTask: function() {
       if (!this.taskIsValid()) { return; }
-      Ember.RSVP.hash({
-        user: ''
-      })
-      .then(function(promises) {
-        console.log(this.get('task.title'))
-        console.log(this.get('task.date'))
-        console.log(this.get('task.description'))
-        console.log(promises.user)
+        // console.log(this.get('task.title'))
+        // console.log(this.get('task.date'))
+        // console.log(this.get('task.description'))
+        // console.log(promises.user)
         var newTask = this.store.createRecord('task', {
           title: this.get('task.title'),
           date: this.get('task.date'),
@@ -39,7 +35,6 @@ export default Ember.Controller.extend({
           'task.description': ''
         });
         this.transitionToRoute('tasks');
-      }.bind(this));
     }
   }
 });
