@@ -20,10 +20,14 @@ export default Ember.Controller.extend({
         user: 'jason'
       })
       .then(function(promises) {
+        console.log(this.get('task.title'))
+        console.log(this.get('task.date'))
+        console.log(this.get('task.description'))
+        console.log(promises.user)
         var newTask = this.store.createRecord('task', {
           title: this.get('task.title'),
-          date: this.get('date.date'),
-          description: this.get('date.description'),
+          date: this.get('task.date'),
+          description: this.get('task.description'),
           user: promises.user
         });
         newTask.save();
