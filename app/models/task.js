@@ -8,5 +8,6 @@ export default DS.Model.extend({
 		defaultValue: function () {
 			return new Date();
 		}
-	})
+	}),
+	user: DS.belongsTo('user', { async: true }),
 });
