@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  session: Ember.inject.service(),
+
   init: function() {
     this.set('task',  Ember.Object.create());
   },
@@ -17,7 +19,7 @@ export default Ember.Controller.extend({
     addTask: function() {
       if (!this.taskIsValid()) { return; }
       Ember.RSVP.hash({
-        user: 'haha'
+        user: ''
       })
       .then(function(promises) {
         console.log(this.get('task.title'))
@@ -28,7 +30,7 @@ export default Ember.Controller.extend({
           title: this.get('task.title'),
           date: this.get('task.date'),
           description: this.get('task.description'),
-          user: 'shit'
+          user: this.get('session').currentUser
         });
         newTask.save();
         this.setProperties({
