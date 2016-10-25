@@ -1,2 +1,6 @@
-{{outlet}}
-<h1>Tasks</h1>
+{{#if session.isAuthenticated}}
+  <h1>Tasks</h1>
+  {{outlet}}
+{{else}}
+  <div class="well">Please Login</div>
+{{/if}}

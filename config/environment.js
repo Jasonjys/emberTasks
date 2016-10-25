@@ -11,6 +11,9 @@ module.exports = function(environment) {
       storageBucket: "embertasks-b34ae.appspot.com"
       //messagingSenderId: "1091796089031"
     },
+    torii: {
+      sessionServiceName: 'session'
+    },
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
