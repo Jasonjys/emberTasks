@@ -1,6 +1,12 @@
 {{#if session.isAuthenticated}}
-  <h1>Tasks</h1>
   {{outlet}}
+  <h1>Tasks</h1>
+  {{#each task in model}}
+    <div class="well">
+      <h4>{{task.title}}</h4>
+      <p>{{task.description}}</p>
+    </div>
+  {{/each}}
 {{else}}
   <div class="well">Please Login</div>
 {{/if}}

@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
     addTask: function() {
       if (!this.taskIsValid()) { return; }
       Ember.RSVP.hash({
-        user: 'jason'
+        user: 'haha'
       })
       .then(function(promises) {
         console.log(this.get('task.title'))
@@ -28,7 +28,7 @@ export default Ember.Controller.extend({
           title: this.get('task.title'),
           date: this.get('task.date'),
           description: this.get('task.description'),
-          user: promises.user
+          user: 'shit'
         });
         newTask.save();
         this.setProperties({
