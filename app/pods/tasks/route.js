@@ -3,9 +3,20 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   model () {
     if (this.get('session.isAuthenticated')) {
-      //console.log("session.isAuthenticated")
-      console.log(this.get('store').findAll('task'))
-      return this.get('store').findAll('task');
+      let user = this.get('session.currentUser.displayName');
+      console.log(user);
+
+      var returnValue = this.get('store').query('task', {
+        filter: {
+          user: user
+        }
+      });
+      console.log(returnValue);
+      return this.get('store').query('task', {
+        filter: {
+          user: user
+        }
+      });
     }
   },
 });
