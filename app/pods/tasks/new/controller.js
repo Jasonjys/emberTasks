@@ -25,9 +25,9 @@ export default Ember.Controller.extend({
         return; 
       }
         // console.log(this.get('task.title'))
-        // console.log(this.get('task.date'))
+        console.log(this.get('task.date'))
         // console.log(this.get('task.description'))
-        console.log("session.currentUser:", this.get('session.currentUser'))
+        console.log("session.currentUser:", this.get('session.currentUser'));
         var newTask = this.store.createRecord('task', {
           title: this.get('task.title'),
           date: this.get('task.date'),

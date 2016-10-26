@@ -4,6 +4,8 @@
   {{#each model as |task|}}
     <div class="well">
       <h4>{{task.title}}</h4>
+      <h5>Due: {{moment-format task.date}}</h5>
+      <h6>Time Left: {{moment-from-now task.date locale='ed' timeZone='Canada/Toronto'}}</h6>
       <p>{{task.description}}</p>
     </div>
   {{/each}}
