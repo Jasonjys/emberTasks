@@ -3,7 +3,7 @@
 Your tasks manager
 ## Thoughts
 
-# add location for each task
+* add location for each task
 
 ## Prerequisites
 
