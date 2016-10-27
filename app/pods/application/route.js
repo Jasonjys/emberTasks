@@ -6,7 +6,7 @@ export default Ember.Route.extend({
   actions: {
     signIn: function(provider) {
       this.get('session').open('firebase', { provider: provider}).then(function(data) {
-        console.log(data.currentUser);
+        //console.log(data.currentUser);
         console.log(data.currentUser.displayName);
         //this.transitionTo('tasks');
       });

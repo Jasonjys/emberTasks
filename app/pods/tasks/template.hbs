@@ -25,9 +25,11 @@
           placeholder="Describe Task..."}}
         </div>
       {{else}}
-        <h4>{{task.title}}</h4>
-        <h5>Due: {{moment-format task.date timeZone='Canada/Toronto'}}</h5>
-        <h6>Time Left: {{moment-from-now task.date timeZone='Canada/Toronto'}}</h6>
+        <h3>{{task.title}}</h3>
+        <h4>Due: {{moment-format task.date timeZone='Canada/Toronto'}}</h4>
+        <h5>
+          It is due <strong>{{moment-from-now task.date timeZone='Canada/Toronto'}}</strong>
+        </h5>
         <p>{{task.description}}</p>
       {{/if}}
     </div>
