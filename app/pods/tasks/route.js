@@ -15,7 +15,8 @@ export default Ember.Route.extend({
       return this.get('store').query('task', {
         filter: {
           user: user
-        }
+        },
+        //orderBy: 'date'
       });
     }
   },
