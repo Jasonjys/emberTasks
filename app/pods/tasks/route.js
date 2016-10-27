@@ -20,4 +20,12 @@ export default Ember.Route.extend({
       });
     }
   },
+  actions:{
+    save: function() {
+      var controller = this.get('controller'),
+        task = controller.get('model');
+
+      return task.save();
+    },
+  }
 });
