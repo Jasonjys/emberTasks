@@ -17,7 +17,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         {{#if session.isAuthenticated}}
-          Logged in as {{session.currentUser.displayName}}
+          Logged in as {{session.currentUser.email}}
           <button {{action "signOut"}} class="btn btn-success">Sign out</button>
         {{else}}
           <button {{action "signIn" "google"}} class="btn btn-success">Sign in with Google</button>

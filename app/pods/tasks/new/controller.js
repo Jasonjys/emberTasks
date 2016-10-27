@@ -32,7 +32,7 @@ export default Ember.Controller.extend({
           title: this.get('task.title'),
           date: this.get('task.date'),
           description: this.get('task.description'),
-          user: this.get('session.currentUser.displayName')
+          email: this.get('session.currentUser.email')
         });
         newTask.save();
         this.setProperties({

@@ -10,5 +10,5 @@ export default DS.Model.extend({
 		}
 	}),
 	//user: DS.belongsTo('user', { async: true }),
-	user: DS.attr()
+	user: DS.belongsTo('user', { async: true })
 });
