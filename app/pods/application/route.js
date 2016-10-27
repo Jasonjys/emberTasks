@@ -10,7 +10,20 @@ export default Ember.Route.extend({
         console.log(data.currentUser.email);
         console.log(data.currentUser.displayName);
         //this.transitionTo('tasks');
-        //this.get('store').findRecord('user')
+        if(this.get('store').findRecord('user', data.uid) !== null){
+          var newUser = this.store.createRecord('user', {
+            userName: data.currentUser.email,
+            provider: data.provider,
+            uid: data.uid,
+            tasks: null
+          });
+          newUser.save();
+          this.setProperties({
+            'user.userName': '',
+            'user.provider': '',
+            'user.uid': ''
+          });
+        }
       });
     },
     signOut: function() {
