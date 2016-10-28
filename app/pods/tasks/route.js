@@ -9,7 +9,8 @@ export default Ember.Route.extend({
         equalTo: this.get('session.currentUser.email')
       }));
       return this.get('store').query('task', {
-        //equalTo: this.get('session.currentUser.email')
+        orderBy: 'email',
+        equalTo: this.get('session.currentUser.email')
       });
     }
   },
