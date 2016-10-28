@@ -14,15 +14,14 @@
       	<li>{{#link-to 'tasks'}}My Tasks{{/link-to}}</li>
       	<li>{{#link-to 'tasks.new'}}New Task{{/link-to}}</li>
       </ul>
-
-      <div class="navbar-right">
+      <ul class="nav navbar-nav navbar-right">
         {{#if session.isAuthenticated}}
           <p style="color: white;">Logged in as {{session.currentUser.email}}</p>
           <button {{action "signOut"}} class="btn btn-success">Sign out</button>
         {{else}}
           <button {{action "signIn" "google"}} class="btn btn-success">Sign in with Google</button>
         {{/if}}
-      </div>
+      </ul>
     </div><!--/.nav-collapse -->
 
   </div>
