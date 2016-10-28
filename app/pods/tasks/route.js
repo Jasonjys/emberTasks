@@ -5,9 +5,11 @@ export default Ember.Route.extend({
     if (this.get('session.isAuthenticated')) {
       let email = this.get('session.currentUser.email');
       console.log(email);
-
+      console.log("filtered tasks: ",this.get('store').query('task', {
+        equalTo: this.get('session.currentUser.email')
+      }));
       return this.get('store').query('task', {
-        email: this.get('session.currentUser.email')
+        //equalTo: this.get('session.currentUser.email')
       });
     }
   },
