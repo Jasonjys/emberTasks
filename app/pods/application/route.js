@@ -7,10 +7,10 @@ export default Ember.Route.extend({
   actions: {
     signIn: function(provider) {
       this.get('session').open('firebase', { provider: provider}).then(function(data) {
-        const username = data.currentUser.email;
-        const uid = data.uid
+        // const username = data.currentUser.email;
+        // const uid = data.uid
         // console.log(data.currentUser);
-        // console.log(data.currentUser.email);
+        console.log(data.currentUser.email);
         // console.log(data.currentUser.displayName);
         //username = username.replace(/[^a-zA-Z0-9 -]/g, '');
         // const store = this.get('store');
@@ -31,6 +31,7 @@ export default Ember.Route.extend({
         //   // Save the user
         //   user.save();
         // });
+        //this.transitionTo('tasks');
       });
     },
     signOut: function() {
