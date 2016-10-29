@@ -1,5 +1,7 @@
 # Ember-tasks
 
+## Hosting URL: https://embertasks-b34ae.firebaseapp.com
+
 Your tasks manager
 ## Thoughts
 
