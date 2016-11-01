@@ -2,11 +2,12 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
   beforeModel () {
+    //this.transitionTo('tasks');
     return this.get('session').fetch().catch(function() {});
   },
   actions: {
     signIn: function(provider) {
-      this.get('session').open('firebase', { provider: provider}).then(function(data) {
+      this.get('session').open('firebase', { provider: provider}).then((data) => {
         // const username = data.currentUser.email;
         // const uid = data.uid
         // console.log(data.currentUser);
@@ -31,7 +32,7 @@ export default Ember.Route.extend({
         //   // Save the user
         //   user.save();
         // });
-        //this.transitionTo('tasks');
+        this.transitionTo('tasks');
       });
     },
     signOut: function() {
