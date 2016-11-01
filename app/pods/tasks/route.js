@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   model () {
     if (this.get('session.isAuthenticated')) {
-      console.log("in if")
+      console.log("in if");
       const email = this.get('session.currentUser.email');
       return this.get('store').query('task', {
         orderBy: 'email',
@@ -11,7 +11,7 @@ export default Ember.Route.extend({
       });
     }
     else {
-      console.log('not login')
+      console.log('not login');
       this.transitionTo('login');
     }
   },
