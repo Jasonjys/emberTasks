@@ -36,6 +36,7 @@ export default Ember.Route.extend({
       });
     },
     signOut: function() {
+      console.log('in signOut function');
       this.transitionTo('login');
       this.get('session').close();
     }

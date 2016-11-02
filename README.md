@@ -1,6 +1,6 @@
 # Ember-tasks
 
-Your tasks manager
+Your tasks manager:
 https://embertasks-b34ae.firebaseapp.com
 
 ## Thoughts
