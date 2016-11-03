@@ -1,7 +1,6 @@
 {{#if session.isAuthenticated}}
   {{outlet}}
   <h1>Tasks</h1>
-  haha
   {{#each model as |task|}}
     <div class="well">
       {{#if task.isEditing}}
