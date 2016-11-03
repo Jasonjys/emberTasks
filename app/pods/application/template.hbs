@@ -18,8 +18,6 @@
         {{#if session.isAuthenticated}}
           <mediem style="color: white;">Logged in as {{session.currentUser.email}}</mediem>
           <button {{action "signOut"}} class="btn btn-success">Sign out</button>
-        {{else}}
-          <button {{action "signIn" "google"}} class="btn btn-success">Sign in with Google</button>
         {{/if}}
       </ul>
     </div><!--/.nav-collapse -->
