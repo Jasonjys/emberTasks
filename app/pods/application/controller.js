@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
       console.log('in signOut function');
       this.get('session').close()
       .then(() => {
-      	this.transitionToRoute('application');
+      	this.transitionToRoute('login');
       });
     }
   }

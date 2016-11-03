@@ -1,15 +1,9 @@
 import Ember from 'ember';
 export default Ember.Route.extend({
-  beforeModel () {
-    return this.get('session').fetch().catch(function() {});
-  },
-  // actions: {
-  //   signOut: function() {
-  //     console.log('in signOut function');
-  //     this.get('session').close()
-  //     .then(() => {
-  //       this.get('router').transitionTo('application');
-  //     });
-  //   }
-  // }
+  beforeModel() {
+    if (!this.get('session.isAuthenticated')){
+      console.log('in application beforeModel and if');
+      this.transitionTo('login');
+    }
+  }
 });
