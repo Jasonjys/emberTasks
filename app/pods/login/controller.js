@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
         });
       }
       authPromise.then(result => {
-        console.log('session.open result:', result)
+        console.log('session.open result:', result);
         console.log(result.currentUser.email);
         this.transitionToRoute('tasks');
       })
