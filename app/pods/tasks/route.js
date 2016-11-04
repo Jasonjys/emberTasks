@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+   gMap: Ember.inject.service(),
+
   model () {
     if (this.get('session.isAuthenticated')) {
       console.log("isAuthenticated");
@@ -15,12 +17,13 @@ export default Ember.Route.extend({
       this.transitionTo('login');
     }
   },
+
   actions:{
     save: function() {
       var controller = this.get('controller'),
       task = controller.get('model');
 
       return task.save();
-    },
+    }
   }
 });
