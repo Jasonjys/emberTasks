@@ -27,7 +27,7 @@ module.exports = function(environment) {
     },
     googleMap: {
       apiKey: 'AIzaSyDEH8hp0Z8tsu8pmBWXRe9d7W2UR-P7hL0',
-      libraries: ['drawing', 'visualization']
+      libraries: ['drawing', 'visualization', 'places']
     },
     EmberENV: {
       FEATURES: {
