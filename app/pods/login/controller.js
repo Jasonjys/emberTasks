@@ -8,6 +8,7 @@ export default Ember.Controller.extend({
       console.log('in signIn function');
       let authPromise;
       if (provider === 'password') {
+        console.log('provider is password');
         authPromise = this.get('session').open('firebase', {
           provider: provider,
           email: this.get('email'),

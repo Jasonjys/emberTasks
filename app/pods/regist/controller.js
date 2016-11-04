@@ -13,6 +13,7 @@ export default Ember.Controller.extend({
       console.log('password: ', pass);
 
       auth.createUserWithEmailAndPassword(email, pass).then((userResponse) => {
+        console.log('in createUserWithEmailAndPassword function')
         const user = this.store.createRecord('user', {
           id: userResponse.uid,
           email: userResponse.email
