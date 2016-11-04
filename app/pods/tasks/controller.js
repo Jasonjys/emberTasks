@@ -8,6 +8,14 @@ export default Ember.Controller.extend({
   //place: null,
   zoom: 17,
   
+  markers: Ember.A([
+    {
+      id: 'marker1',
+      lat: null,
+      lng: null,
+    }
+  ]),
+
   actions: {
     edit: function(task) {
       task.set('isEditing', true);
@@ -17,12 +25,15 @@ export default Ember.Controller.extend({
       return true;
     },
     didUpdatePlace: function(attr){
-      console.log(attr);
       this.set('lat', attr.lat);
       this.set('lng', attr.lng);
 
-      console.log("lat: ", this.get('lat'));
-      console.log("lng: ", this.get('lng'));
+      let markersArray = this.get('markers');
+      let marker = markersArray.objectAt(0);
+      marker.lat = attr.lat;
+      marker.lng = attr.lng;
+
+      markersArray.arrayContentDidChange(0);
     }
   }
 });
