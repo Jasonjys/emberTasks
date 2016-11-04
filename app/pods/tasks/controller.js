@@ -1,12 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  //gMap: Ember.inject.service(),
-
-  lat: 32.75494243654723,
-  lng: -86.8359375,
-  //place: null,
-  zoom: 17,
+  lat: 56.130366,
+  lng: -106.34677099999999,
+  zoom: 3,
   
   markers: Ember.A([
     {
@@ -27,6 +24,7 @@ export default Ember.Controller.extend({
     didUpdatePlace: function(attr){
       this.set('lat', attr.lat);
       this.set('lng', attr.lng);
+      this.set('zoom', 17);
 
       let markersArray = this.get('markers');
       let marker = markersArray.objectAt(0);
