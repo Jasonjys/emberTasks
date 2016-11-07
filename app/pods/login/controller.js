@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	session: Ember.inject.service('session'),
+	//session: Ember.inject.service('session'),
 	
   actions: {
     signIn: function(provider) {
@@ -22,7 +22,7 @@ export default Ember.Controller.extend({
       authPromise.then(result => {
         console.log('session.open result:', result);
         console.log(result.currentUser.email);
-        this.transitionToRoute('tasks');
+        this.transitionToRoute('users.tasks');
       })
       .catch(err => console.warn('session.open error:', err));
     }

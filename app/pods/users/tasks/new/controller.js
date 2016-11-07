@@ -33,31 +33,41 @@ export default Ember.Controller.extend({
         alert("Missing Info");
         return; 
       }
-        // console.log(this.get('task.title'))
-        // console.log(this.get('task.date'))
-        // console.log(this.get('task.description'))
-        console.log("session.currentUser:", this.get('session.currentUser'));
-        var newTask = this.store.createRecord('task', {
-          title: this.get('task.title'),
-          date: this.get('task.date'),
-          location: this.get('task.location'),
-          description: this.get('task.description'),
-          position: {
-            lat:this.get('lat'),
-            lng:this.get('lng')
-          },
-          email: this.get('session.currentUser.email')
-        });
-        console.log("in addTask", newTask.position);
-        newTask.save();
-        this.setProperties({
-          'task.title': '',
-          'task.date': '',
-          'task.location':'',
-          'task.position':'',
-          'task.description': ''
-        });
-        this.transitionToRoute('tasks');
+      // console.log(this.get('task.title'))
+      // console.log(this.get('task.date'))
+      // console.log(this.get('task.description'))
+      //console.log("session.currentUser:", this.get('session.currentUser'));
+      var newTask = this.store.createRecord('task', {
+        title: this.get('task.title'),
+        date: this.get('task.date'),
+        location: this.get('task.location'),
+        description: this.get('task.description'),
+        position: {
+          lat:this.get('lat'),
+          lng:this.get('lng')
+        },
+        email: this.get('session.currentUser.email')
+      });
+      console.log("in addTask", newTask.position);
+
+      //var user = this.get('store').findRecord('user', session.currentUser.email);
+      var user = 'lala'
+      console.log("current user: ", user);
+      // user.get('tasks').addObject(newTask);
+
+      newTask.save().then(function() {
+        console.log('in then function');
+        return user.save();
+      });
+
+      this.setProperties({
+        'task.title': '',
+        'task.date': '',
+        'task.location':'',
+        'task.position':'',
+        'task.description': ''
+      });
+      this.transitionToRoute('users.tasks');
     },
     didUpdatePlace: function(attr){
       this.set('lat', attr.lat);
