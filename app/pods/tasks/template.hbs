@@ -31,6 +31,8 @@
           It is due <strong>{{moment-from-now task.date timeZone='Canada/Toronto'}}</strong>
         </h5>
         <p>{{task.description}}</p>
+        <p>Location: {{task.location}}</p>
+        {{g-maps name="my-map" lat=task.position.lat lng=task.position.lng zoom=14 marker=marker}}
       {{/if}}
     </div>
   {{/each}}

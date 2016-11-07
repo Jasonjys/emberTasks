@@ -8,6 +8,6 @@ export default Ember.Controller.extend({
     save: function(task) {
       task.set('isEditing', false);
       return true;
-    },
+    }
   }
 });
