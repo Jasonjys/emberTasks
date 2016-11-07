@@ -1,10 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  //session: Ember.inject.service(),
   lat: 56.130366,
   lng: -106.34677099999999,
-  zoom: 9,
+  zoom: 3,
   markers: Ember.A([
     {
       id: 'marker1',
