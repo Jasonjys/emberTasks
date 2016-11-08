@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  firebaseApp: Ember.inject.service(),
+
   lat: 56.130366,
   lng: -106.34677099999999,
   zoom: 3,
@@ -51,9 +53,14 @@ export default Ember.Controller.extend({
       console.log("in addTask", newTask.position);
 
       //var user = this.get('store').findRecord('user', session.currentUser.email);
-      var user = 'lala'
+      debugger
+      const auth = this.get('firebaseApp').auth();
+      var userUid = auth.currentUser.uid;
+
+      var user = this.get('store').findRecord('user', userUid);
+      user.get('tasks').addObject(newTask);
+
       console.log("current user: ", user);
-      // user.get('tasks').addObject(newTask);
 
       newTask.save().then(function() {
         console.log('in then function');

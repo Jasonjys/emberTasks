@@ -12,6 +12,4 @@ export default DS.Model.extend({
 		}
 	}),
 	email: DS.attr(),
-	//user: DS.belongsTo('user', { async: true }),
-	user: DS.belongsTo('user', { async: true })
 });

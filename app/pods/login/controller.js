@@ -20,9 +20,15 @@ export default Ember.Controller.extend({
         });
       }
       authPromise.then(result => {
+        this.get('store').createRecord('user', {
+          id: result.currentUser.uid,
+          email: result.currentUser.email
+        }).save()
+
+        debugger
         console.log('session.open result:', result);
         console.log(result.currentUser.email);
-        this.transitionToRoute('users.tasks');
+        this.transitionToRoute('tasks');
       })
       .catch(err => console.warn('session.open error:', err));
     }

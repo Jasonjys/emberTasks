@@ -7,12 +7,10 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('users', function() {
-    this.route('tasks', function() {
-      this.route('new');
-      this.route('edit');
-    });
-  })
+  this.route('tasks', function() {
+    this.route('new');
+    this.route('edit');
+  });
   this.route('login');
   this.route('signup');
   this.route('users');
