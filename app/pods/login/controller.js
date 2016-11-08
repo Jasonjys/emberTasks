@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
         this.get('store').createRecord('user', {
           id: result.currentUser.uid,
           email: result.currentUser.email
-        }).save()
+        }).save();
 
         debugger
         console.log('session.open result:', result);
