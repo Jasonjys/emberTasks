@@ -9,6 +9,13 @@ export default Ember.Controller.extend({
     save: function(task) {
       task.set('isEditing', false);
       return true;
+    },
+    deleteTask: function(id){
+      this.set('isConfirmVisible',true)
+      this.store.findRecord('task',id).then(function(task){
+        task.deleteRecord();
+        task.save();
+      })
     }
   }
 });

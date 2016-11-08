@@ -31,6 +31,7 @@
           It is due <strong>{{moment-from-now task.date timeZone='Canada/Toronto'}}</strong>
         </h5>
         <p>{{task.description}}</p>
+        <button {{action 'deleteTask' task.id}} class="btn btn-danger">Delete</button>
       {{/if}}
     </div>
   {{/each}}
