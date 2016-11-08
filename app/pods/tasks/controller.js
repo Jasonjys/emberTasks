@@ -12,10 +12,13 @@ export default Ember.Controller.extend({
     },
     deleteTask: function(id){
       this.set('isConfirmVisible',true)
-      this.store.findRecord('task',id).then(function(task){
+      let close=confirm("are you sure?");
+      if(close){
+        this.store.findRecord('task',id).then(function(task){
         task.deleteRecord();
         task.save();
       })
+      }
     }
   }
 });
