@@ -22,10 +22,10 @@ export default Ember.Controller.extend({
       authPromise.then(result => {
         this.get('store').createRecord('user', {
           id: result.currentUser.uid,
-          email: result.currentUser.email
+          email: result.currentUser.email,
+          tasks: Ember.A()
         }).save();
 
-        debugger
         console.log('session.open result:', result);
         console.log(result.currentUser.email);
         this.transitionToRoute('tasks');

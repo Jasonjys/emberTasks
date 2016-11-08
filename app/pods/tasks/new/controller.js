@@ -57,15 +57,25 @@ export default Ember.Controller.extend({
       const auth = this.get('firebaseApp').auth();
       var userUid = auth.currentUser.uid;
 
-      var user = this.get('store').findRecord('user', userUid);
-      user.get('tasks').addObject(newTask);
+      var user = this.get('store').findRecord('user', userUid).then((user) => {
+        debugger;
+        user.get('tasks').addObject(newTask)
+        newTask.save().then(() => {
+          user.save()
+        })
 
-      console.log("current user: ", user);
-
-      newTask.save().then(function() {
-        console.log('in then function');
-        return user.save();
       });
+      // console.log('user: ', user)
+
+      // // let tasks = user.get('tasks') || Ember.A()
+      // // tasks.addObject(newTask);
+
+      // console.log("current user: ", user);
+
+      // newTask.save().then(function() {
+      //   console.log('in then function');
+      //   return user.save();
+      // });
 
       this.setProperties({
         'task.title': '',
@@ -74,7 +84,7 @@ export default Ember.Controller.extend({
         'task.position':'',
         'task.description': ''
       });
-      this.transitionToRoute('users.tasks');
+      this.transitionToRoute('tasks');
     },
     didUpdatePlace: function(attr){
       this.set('lat', attr.lat);
