@@ -5,11 +5,11 @@ module.exports = function(environment) {
     modulePrefix: 'ember-tasks',
     podModulePrefix: 'ember-tasks/pods',
     firebase: {
-      apiKey: "AIzaSyAYnUjxNFQU--AFhBsFKK9hh0D9-JJP6Jo",
+      apiKey: "AIzaSyDEH8hp0Z8tsu8pmBWXRe9d7W2UR-P7hL0",
       authDomain: "embertasks-b34ae.firebaseapp.com",
       databaseURL: "https://embertasks-b34ae.firebaseio.com",
-      storageBucket: "embertasks-b34ae.appspot.com"
-      //messagingSenderId: "1091796089031"
+      storageBucket: "embertasks-b34ae.appspot.com",
+      messagingSenderId: "1091796089031"
     },
     torii: {
       sessionServiceName: 'session'
@@ -29,6 +29,20 @@ module.exports = function(environment) {
       // when it is created
     }
   };
+
+  // ENV.contentSecurityPolicy = {
+  //   'default-src': "'none'",
+  //   'script-src': "'self' 'unsafe-eval' *.googleapis.com maps.gstatic.com",
+  //   'font-src': "'self' fonts.gstatic.com",
+  //   'connect-src': "'self' maps.gstatic.com",
+  //   'img-src': "'self' *.googleapis.com maps.gstatic.com csi.gstatic.com data:",
+  //   'style-src': "'self' 'unsafe-inline' fonts.googleapis.com maps.gstatic.com"
+  // };
+
+  // ENV.googleMap = {
+  //   apiKey: 'AIzaSyDEH8hp0Z8tsu8pmBWXRe9d7W2UR-P7hL0',
+  //   libraries: ['drawing', 'visualization']
+  // }
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
