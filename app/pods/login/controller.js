@@ -19,13 +19,14 @@ export default Ember.Controller.extend({
           provider: provider,
         });
       }
-      authPromise.then(result => {
-        this.get('store').createRecord('user', {
-          id: result.currentUser.uid,
-          email: result.currentUser.email,
-          tasks: Ember.A()
-        }).save();
-
+      authPromise.then((result) => {
+        if(!this.get('store').hasRecordForId('user', result.uid)){
+          console.log('user not exist');
+          this.get('store').createRecord('user', {
+            id: result.uid,
+            email: result.currentUser.email,
+          }).save();
+        }
         console.log('session.open result:', result);
         console.log(result.currentUser.email);
         this.transitionToRoute('tasks');

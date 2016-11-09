@@ -53,29 +53,15 @@ export default Ember.Controller.extend({
       console.log("in addTask", newTask.position);
 
       //var user = this.get('store').findRecord('user', session.currentUser.email);
-      debugger
       const auth = this.get('firebaseApp').auth();
-      var userUid = auth.currentUser.uid;
+      var user = auth.currentUser;
 
-      var user = this.get('store').findRecord('user', userUid).then((user) => {
-        debugger;
-        user.get('tasks').addObject(newTask)
+      this.get('store').findRecord('user', user.uid).then((user) => {
+        user.get('tasks').addObject(newTask);
         newTask.save().then(() => {
-          user.save()
-        })
-
+          user.save();
+        });
       });
-      // console.log('user: ', user)
-
-      // // let tasks = user.get('tasks') || Ember.A()
-      // // tasks.addObject(newTask);
-
-      // console.log("current user: ", user);
-
-      // newTask.save().then(function() {
-      //   console.log('in then function');
-      //   return user.save();
-      // });
 
       this.setProperties({
         'task.title': '',
