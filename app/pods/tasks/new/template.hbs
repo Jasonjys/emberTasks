@@ -10,11 +10,6 @@
       {{input type="date" class="form-control" value=task.date
       placeholder="mm/dd/yyyy"}}
     </div>
-    <div class="form-group">
-      <label>Destination</label>
-      {{g-autocomplete value=task.location on-select=(action 'didUpdatePlace')}}
-      {{g-maps name="my-map" lat=lat lng=lng zoom=zoom markers=markers}}
-    </div>
      <div class="form-group">
       <label>Description</label>
       {{textarea type="text" class="form-control" value=task.description
