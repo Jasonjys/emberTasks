@@ -13,7 +13,7 @@ export default Ember.Route.extend({
 
       return RSVP.hash({
         tasks: this.get('store').findRecord('user', user.uid).then((result) => {
-          console.log(result.uid);
+          console.log(result);
           console.log('tasks: ', result.get('tasks'));
           return result.get('tasks');
         }),
@@ -23,13 +23,4 @@ export default Ember.Route.extend({
       this.transitionTo('login');
     }
   },
-
-  actions:{
-    save: function() {
-      var controller = this.get('controller'),
-      task = controller.get('model');
-
-      return task.save();
-    }
-  }
 });

@@ -24,7 +24,8 @@ export default Ember.Controller.extend({
         if(!this.get('store').hasRecordForId('user', result.uid)){
           console.log('user not exist');
           this.get('store').createRecord('user', {
-            email: result.currentUser.email,
+            id: result.currentUser.uid,
+            email: result.currentUser.email
           }).save();
         }
         console.log('session.open result:', result);
