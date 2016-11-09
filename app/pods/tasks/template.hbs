@@ -1,8 +1,8 @@
 {{#if session.isAuthenticated}}
   {{outlet}}
   <h1>Tasks</h1>
-  {{log model}}
-  {{#each model as |task|}}
+  {{log model.tasks}}
+  {{#each model.tasks as |task|}}
     <div class="well">
       {{#if task.isEditing}}
         <button class="btn btn-primary pull-right" {{action "save" task}}>Save</button>

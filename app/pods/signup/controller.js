@@ -6,6 +6,7 @@ export default Ember.Controller.extend({
   actions: {
     signUp() {
       const auth = this.get('firebaseApp').auth();
+      const user = auth.currentUser;
       const email = this.get('email');
       const pass = this.get('password');
 
@@ -20,6 +21,8 @@ export default Ember.Controller.extend({
         });
         console.log('user:', user);
         return user.save();
+      }).then(() => {
+        this.transitionToRoute('tasks');
       });
     }
   }
