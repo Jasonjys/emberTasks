@@ -5,7 +5,6 @@ export default Ember.Route.extend({
   firebaseApp: Ember.inject.service(),
 
   model () {
-    console.log('in tasks model hook')
     const auth = this.get('firebaseApp').auth();
     var user = auth.currentUser;
 
