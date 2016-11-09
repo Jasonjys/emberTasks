@@ -35,7 +35,6 @@ export default Ember.Controller.extend({
       var user = auth.currentUser;
 
       this.get('store').findRecord('user', user.uid).then((user) => {
-        debugger
         user.get('tasks').addObject(newTask);
         newTask.save().then(() => {
           user.save();

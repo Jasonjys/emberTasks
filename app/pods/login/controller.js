@@ -18,10 +18,12 @@ export default Ember.Controller.extend({
         });
       }
       authPromise.then((result) => {
+        console.log('uid:', result.uid)
+        console.log(this.get('store').hasRecordForId('user', result.uid))
+
         if(!this.get('store').hasRecordForId('user', result.uid)){
           console.log('user not exist');
           this.get('store').createRecord('user', {
-            id: result.uid,
             email: result.currentUser.email,
           }).save();
         }

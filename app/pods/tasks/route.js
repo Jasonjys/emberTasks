@@ -13,7 +13,9 @@ export default Ember.Route.extend({
 
       return RSVP.hash({
         tasks: this.get('store').findRecord('user', user.uid).then((result) => {
-          return result.get('tasks')
+          console.log(result.uid);
+          console.log('tasks: ', result.get('tasks'));
+          return result.get('tasks');
         }),
       })
     }else{

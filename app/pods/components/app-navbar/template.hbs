@@ -15,7 +15,6 @@
       	<li>{{#link-to 'tasks.new'}}New Task{{/link-to}}</li>
       </ul>
       <ul class="nav navbar-right">
-        {{log session.isAuthenticated}}
         {{#if session.isAuthenticated}}
           <mediem style="color: white;">Logged in as {{session.currentUser.email}}</mediem>
           <button {{action "signOut"}} class="btn btn-success">Sign out</button>
