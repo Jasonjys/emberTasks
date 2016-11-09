@@ -27,7 +27,6 @@ export default Ember.Controller.extend({
       var newTask = this.store.createRecord('task', {
         title: this.get('task.title'),
         date: this.get('task.date'),
-        location: this.get('task.location'),
         description: this.get('task.description'),
       });
       console.log("in addTask", newTask.position);
