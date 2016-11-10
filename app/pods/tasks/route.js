@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import DS from 'ember-data'
 import RSVP from 'rsvp';
 
 export default Ember.Route.extend({
@@ -11,13 +12,16 @@ export default Ember.Route.extend({
     if(user){
       console.log("isAuthenticated");
 
-      return RSVP.hash({
-        tasks: this.get('store').findRecord('user', user.uid).then((result) => {
-          console.log(result);
-          console.log('tasks: ', result.get('tasks'));
-          return result.get('tasks');
-        }),
-      })
+      return {
+        tasks: DS.PromiseArray.create({
+          promise: this.get('store').findRecord('user', user.uid).then((result) => {
+            console.log('tasks: ', result.get('tasks'));
+            return result.get('tasks');
+          }, (error) => {
+            console.log('no user exist')
+          })
+        })
+      }
     }else{
       console.log('not login');
       this.transitionTo('login');

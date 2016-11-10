@@ -15,7 +15,13 @@ export default Ember.Controller.extend({
           id: userResponse.uid,
           email: userResponse.email,
         });
-        return user.save();
+        return user.save().then(() => {
+          this.get('session').open('firebase', {
+            provider: 'password',
+            email: email,
+            password: pass
+          });
+        })
       }).then(() => {
         this.transitionToRoute('tasks');
       });

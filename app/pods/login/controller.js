@@ -21,16 +21,20 @@ export default Ember.Controller.extend({
         console.log('uid:', result.uid)
         console.log(this.get('store').hasRecordForId('user', result.uid))
 
-        if(!this.get('store').hasRecordForId('user', result.uid)){
-          console.log('user not exist');
+        this.store.findRecord('user', result.uid).then((userExist) => {
+          console.log('exist');
+        }, (notExist) => {
           this.get('store').createRecord('user', {
             id: result.currentUser.uid,
             email: result.currentUser.email
           }).save();
-        }
+        }).then(() => {
+          this.transitionToRoute('tasks');
+        })
+
         console.log('session.open result:', result);
         console.log(result.currentUser.email);
-        this.transitionToRoute('tasks');
+        
       })
       .catch(err => console.warn('session.open error:', err));
     }
