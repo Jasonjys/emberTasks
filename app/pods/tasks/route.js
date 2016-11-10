@@ -14,13 +14,5 @@ export default Ember.Route.extend({
       console.log('not login');
       this.transitionTo('login');
     }
-  },
-  actions:{
-    save: function() {
-      var controller = this.get('controller'),
-      task = controller.get('model');
-
-      return task.save();
-    },
   }
 });
