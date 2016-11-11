@@ -7,9 +7,6 @@ export default Ember.Controller.extend({
     this.set('task',  Ember.Object.create());
   },
   taskIsValid: function() {
-    console.log("title", this.get('task.title'));
-    console.log("date", this.get('task.date'));
-    console.log("description", this.get('task.description'));
     var isValid = true;
     ['task.title', 'task.date', 'task.description'].forEach(function(field) {
       if (this.get(field) === '' || Ember.typeOf(this.get(field)) === 'undefined') {
@@ -29,7 +26,6 @@ export default Ember.Controller.extend({
         date: this.get('task.date'),
         description: this.get('task.description'),
       });
-      console.log("in addTask", newTask.position);
 
       const auth = this.get('firebaseApp').auth();
       var user = auth.currentUser;
