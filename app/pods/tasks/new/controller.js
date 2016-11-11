@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  //session: Ember.inject.service(),
-
   init: function() {
     this.set('task',  Ember.Object.create());
   },
@@ -24,9 +22,6 @@ export default Ember.Controller.extend({
         alert("Missing Info");
         return; 
       }
-        // console.log(this.get('task.title'))
-        // console.log(this.get('task.date'))
-        // console.log(this.get('task.description'))
         console.log("session.currentUser:", this.get('session.currentUser'));
         var newTask = this.store.createRecord('task', {
           title: this.get('task.title'),

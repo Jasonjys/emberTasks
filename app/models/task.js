@@ -9,7 +9,4 @@ export default DS.Model.extend({
 			return new Date();
 		}
 	}),
-	email: DS.attr(),
-	//user: DS.belongsTo('user', { async: true }),
-	user: DS.belongsTo('user', { async: true })
 });
