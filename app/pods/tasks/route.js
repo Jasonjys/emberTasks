@@ -1,16 +1,27 @@
 import Ember from 'ember';
+import DS from 'ember-data';
 
 export default Ember.Route.extend({
+  firebaseApp: Ember.inject.service(),
+
   model () {
-    if (this.get('session.isAuthenticated')) {
+    const auth = this.get('firebaseApp').auth();
+    var user = auth.currentUser;
+
+    if(user){
       console.log("isAuthenticated");
-      const email = this.get('session.currentUser.email');
-      return this.get('store').query('task', {
-        orderBy: 'email',
-        equalTo: email
-      });
-    }
-    else {
+
+      return {
+        tasks: DS.PromiseArray.create({
+          promise: this.get('store').findRecord('user', user.uid).then((result) => {
+            console.log('tasks: ', result.get('tasks'));
+            return result.get('tasks');
+          }, (error) => {
+            console.log('no user exist');
+          })
+        })
+      };
+    }else{
       console.log('not login');
       this.transitionTo('login');
     }

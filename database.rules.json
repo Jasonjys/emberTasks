@@ -1,9 +1,6 @@
 {
   "rules": {
-    "tasks": {
-      ".read": "auth != null",
-      ".write": "auth != null",
-      ".indexOn": "email"
-    }
+    ".read": "auth != null",
+    ".write": "auth != null",
   }
 }

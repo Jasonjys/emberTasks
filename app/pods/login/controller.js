@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	session: Ember.inject.service('session'),
-	
   actions: {
     signIn: function(provider) {
       console.log('in signIn function');
@@ -19,10 +17,20 @@ export default Ember.Controller.extend({
           provider: provider,
         });
       }
-      authPromise.then(result => {
+      authPromise.then((result) => {
+        this.store.findRecord('user', result.uid).then((success) => {
+          console.log('exist');
+        }, (error) => {
+          this.get('store').createRecord('user', {
+            id: result.currentUser.uid,
+            email: result.currentUser.email
+          }).save();
+        })
+        .then(() => {
+          this.transitionToRoute('tasks');
+        });
         console.log('session.open result:', result);
         console.log(result.currentUser.email);
-        this.transitionToRoute('tasks');
       })
       .catch(err => console.warn('session.open error:', err));
     }

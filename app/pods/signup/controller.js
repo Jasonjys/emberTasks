@@ -9,16 +9,22 @@ export default Ember.Controller.extend({
       const email = this.get('email');
       const pass = this.get('password');
 
-      console.log('email: ', email);
-      //console.log('password: ', pass);
-
       auth.createUserWithEmailAndPassword(email, pass).then((userResponse) => {
         console.log('in createUserWithEmailAndPassword function');
         const user = this.store.createRecord('user', {
           id: userResponse.uid,
-          email: userResponse.email
+          email: userResponse.email,
         });
-        return user.save();
+        user.save().then(() => {
+          this.get('session').open('firebase', {
+            provider: 'password',
+            email: email,
+            password: pass
+          });
+        });
+      })
+      .then(() => {
+        this.transitionToRoute('tasks');
       });
     }
   }

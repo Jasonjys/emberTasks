@@ -17,6 +17,18 @@ module.exports = function(environment) {
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self' 'unsafe-eval' *.googleapis.com maps.gstatic.com",
+      'font-src': "'self' fonts.gstatic.com",
+      'connect-src': "'self' maps.gstatic.com",
+      'img-src': "'self' *.googleapis.com maps.gstatic.com csi.gstatic.com",
+      'style-src': "'self' 'unsafe-inline' fonts.googleapis.com maps.gstatic.com"
+    },
+    googleMap: {
+      apiKey: 'AIzaSyDEH8hp0Z8tsu8pmBWXRe9d7W2UR-P7hL0',
+      libraries: ['drawing', 'visualization', 'places']
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -35,13 +47,12 @@ module.exports = function(environment) {
   //   'script-src': "'self' 'unsafe-eval' *.googleapis.com maps.gstatic.com",
   //   'font-src': "'self' fonts.gstatic.com",
   //   'connect-src': "'self' maps.gstatic.com",
-  //   'img-src': "'self' *.googleapis.com maps.gstatic.com csi.gstatic.com data:",
+  //   'img-src': "'self' *.googleapis.com maps.gstatic.com csi.gstatic.com",
   //   'style-src': "'self' 'unsafe-inline' fonts.googleapis.com maps.gstatic.com"
   // };
 
   // ENV.googleMap = {
-  //   apiKey: 'AIzaSyDEH8hp0Z8tsu8pmBWXRe9d7W2UR-P7hL0',
-  //   libraries: ['drawing', 'visualization']
+  //   apiKey: 'AIzaSyDEH8hp0Z8tsu8pmBWXRe9d7W2UR-P7hL0'
   // }
 
   if (environment === 'development') {
