@@ -20,11 +20,25 @@ export default Ember.Controller.extend({
             provider: 'password',
             email: email,
             password: pass
+          }).then(() => {
+            this.transitionToRoute('tasks');
           });
         });
-      })
-      .then(() => {
-        this.transitionToRoute('tasks');
+      }).catch((error) => {
+        this.set('badEmail', false);
+        this.set('badPassword', false);
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if (errorCode === 'auth/email-already-in-use'){
+          this.set('badEmail', true);
+          this.set('errorMessage', errorMessage);
+        } else if (errorCode === 'auth/invalid-email'){
+          this.set('badEmail', true);
+          this.set('errorMessage', 'invalid email');
+        } else {
+          this.set('badPassword', true);
+          this.set('errorMessage', error.message);
+        }
       });
     }
   }
