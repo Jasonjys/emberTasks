@@ -3,6 +3,8 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   actions: {
     signIn: function(provider) {
+      this.set('badEmail', false);
+      this.set('badPassword', false);
       console.log('in signIn function');
       let authPromise;
       if (provider === 'password') {
@@ -32,7 +34,18 @@ export default Ember.Controller.extend({
         console.log('session.open result:', result);
         console.log(result.currentUser.email);
       })
-      .catch(err => console.warn('session.open error:', err));
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if(errorCode === 'auth/invalid-email'){
+          this.set('badEmail', true);
+          this.set('errorMessage', 'Invalid email');
+        } else {
+          this.set('badPassword', true);
+          this.set('errorMessage', errorMessage);
+        }
+        console.warn('session.open error:', error)
+      });
     }
   }
 });
