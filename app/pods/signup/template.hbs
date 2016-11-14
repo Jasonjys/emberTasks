@@ -15,7 +15,7 @@
 
         <div class="form-group">
           <label for="email" class="col-md-3 control-label">Email</label>
-          <div class="col-md-9">
+          <div class="col-md-8">
             {{input input=(action 'hideMessage') type="text" class="form-control" value=email placeholder="Email Address"}}
             {{#if badEmail}}
               <small style="color: red;">{{errorMessage}}</small>
@@ -25,7 +25,7 @@
 
         <div class="form-group">
           <label for="password" class="col-md-3 control-label">Password</label>
-          <div class="col-md-9">
+          <div class="col-md-8">
             {{input input=(action 'hideMessage') type="password" class="form-control" value=password placeholder="Password"}}
             {{#if badPassword}}
               <small style="color: red;">{{errorMessage}}</small>
