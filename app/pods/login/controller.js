@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   actions: {
-    signIn: function(provider) {
+    signIn(provider) {
       this.set('badEmail', false);
       this.set('badPassword', false);
       console.log('in signIn function');
@@ -36,19 +36,17 @@ export default Ember.Controller.extend({
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
         if(errorCode === 'auth/invalid-email'){
           this.set('badEmail', true);
-          this.set('errorMessage', 'Invalid email');
+          this.set('errorMessage', 'Invalid email format');
         } else {
           this.set('badPassword', true);
-          this.set('errorMessage', errorMessage);
+          this.set('errorMessage', 'Wrong email or password');
         }
-        console.warn('session.open error:', error)
       });
     },
 
-    hideMessage: function(){
+    hideMessage() {
       if(this.get('badEmail') || this.get('badPassword')){
         this.set('errorMessage', '');
       }
