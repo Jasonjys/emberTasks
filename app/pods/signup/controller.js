@@ -5,9 +5,21 @@ export default Ember.Controller.extend({
 
   actions: {
     signUp() {
+      this.set('badEmail', false);
+      this.set('badPassword', false);
       const auth = this.get('firebaseApp').auth();
       const email = this.get('email');
       const pass = this.get('password');
+
+      if(!email){
+        this.set('badEmail', true);
+        this.set('errorMessage', 'Email can not be empty');
+        return;
+      } else if (!pass) {
+        this.set('badPassword', true);
+        this.set('errorMessage', 'Password can not be empty');
+        return;
+      }
 
       auth.createUserWithEmailAndPassword(email, pass).then((userResponse) => {
         console.log('in createUserWithEmailAndPassword function');
@@ -25,8 +37,6 @@ export default Ember.Controller.extend({
           });
         });
       }).catch((error) => {
-        this.set('badEmail', false);
-        this.set('badPassword', false);
         const errorCode = error.code;
         const errorMessage = error.message;
         if (errorCode === 'auth/email-already-in-use'){
@@ -35,6 +45,9 @@ export default Ember.Controller.extend({
         } else if (errorCode === 'auth/invalid-email'){
           this.set('badEmail', true);
           this.set('errorMessage', 'Invalid email format');
+        } else if(errorCode === 'auth/argument-error'){
+          this.set('badEmail', true);
+          this.set('errorMessage', 'Email can not be empty');
         } else {
           this.set('badPassword', true);
           this.set('errorMessage', errorMessage);
