@@ -1,5 +1,5 @@
 {{#if session.isAuthenticated}}
-  {{outlet}}
+  {{liquid-outlet class="main-container"}}
   <h1>Tasks</h1>
   {{#each model as |task|}}
     <div class="well">
