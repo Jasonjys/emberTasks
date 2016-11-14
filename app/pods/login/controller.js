@@ -46,6 +46,12 @@ export default Ember.Controller.extend({
         }
         console.warn('session.open error:', error)
       });
+    },
+
+    hideMessage: function(){
+      if(this.get('badEmail') || this.get('badPassword')){
+        this.set('errorMessage', '');
+      }
     }
   }
 });
