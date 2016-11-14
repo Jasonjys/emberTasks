@@ -9,7 +9,7 @@
         <button class="btn btn-primary pull-right" {{action "edit" task}}>Edit</button>
       {{/if}}
 
-      {{#if task.isEditing}}
+      {{#liquid-if task.isEditing class="task-edit"}}
         <div class="form-group">
         <label>Title</label>
         {{input type="text" class="form-control" value=task.title
@@ -32,7 +32,7 @@
         </h5>
         <p>{{task.description}}</p>
         <button {{action 'deleteTask' task.id}} class="btn btn-danger">Delete</button>
-      {{/if}}
+      {{/liquid-if}}
     </div>
   {{/each}}
 {{/if}}
