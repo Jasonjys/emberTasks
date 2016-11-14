@@ -34,7 +34,7 @@ export default Ember.Controller.extend({
           this.set('errorMessage', errorMessage);
         } else if (errorCode === 'auth/invalid-email'){
           this.set('badEmail', true);
-          this.set('errorMessage', 'invalid email');
+          this.set('errorMessage', 'Invalid email');
         } else {
           this.set('badPassword', true);
           this.set('errorMessage', error.message);
