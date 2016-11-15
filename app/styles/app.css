@@ -1,3 +1,12 @@
-.ember-cli-g-map {
-    height: 300px;
+/*.ember-cli-g-map {
+  height: 300px;
+}*/
+.search-panel input {
+  padding: 4px 12px 6px 12px;
+}
+.search-panel .input-group-btn {
+  display: inline-block;
+}
+.search-panel .glyphicon {
+  margin-left: 5px;
 }

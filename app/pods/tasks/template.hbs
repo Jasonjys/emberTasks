@@ -1,7 +1,17 @@
 {{#if session.isAuthenticated}}
   {{liquid-outlet class="new-container"}}
-  <h1>Tasks</h1>
-  {{#each model.tasks as |task|}}
+  <div>
+    <h1>Tasks</h1>
+    <div class="form-group">
+      <div class="search-panel">
+        {{input type="text" value=searchTerm placeholder="Search by title"}}
+        <span class="glyphicon glyphicon-search"
+          aria-label="search"></span>
+      </div>
+    </div>
+  </div>
+
+  {{#each matchingTasks as |task|}}
     <div class="well">
       {{#if task.isEditing}}
         <button class="btn btn-primary pull-right" {{action "save" task}}>Save</button>
