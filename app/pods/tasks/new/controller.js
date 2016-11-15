@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
   },
   taskIsValid: function() {
     var isValid = true;
-    ['task.title', 'task.date', 'task.description'].forEach(function(field) {
+    ['task.title', 'task.date'].forEach(function(field) {
       if (this.get(field) === '' || Ember.typeOf(this.get(field)) === 'undefined') {
         isValid = false;
       }
@@ -18,7 +18,7 @@ export default Ember.Controller.extend({
   actions: {
     addTask: function() {
       if (!this.taskIsValid()) {
-        alert("Missing Info");
+        alert("Missing task title or due date");
         return; 
       }
       var newTask = this.store.createRecord('task', {
