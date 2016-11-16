@@ -3,12 +3,13 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   firebaseApp: Ember.inject.service(),
   searchTerm: '',
-  matchingTasks: Ember.computed('model.tasks.@each.title','searchTerm', 
+  matchingTasks: Ember.computed('model.tasks.@each.title','searchTerm',
+                                'model.tasks.@each.description', 
     function() {
       var searchTerm = this.get('searchTerm').toLowerCase();
       return this.get('model.tasks').filter(function(task) {
         return task.get('title').toLowerCase().indexOf(searchTerm) !==
-        -1;
+        -1 || task.get('description').toLowerCase().indexOf(searchTerm) !== -1;
     });
   }),
 
