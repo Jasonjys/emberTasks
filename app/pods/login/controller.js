@@ -41,7 +41,7 @@ export default Ember.Controller.extend({
           this.set('errorMessage', 'Invalid email format');
         } else {
           this.set('badPassword', true);
-          this.set('errorMessage', 'Wrong email or password');
+          this.set('errorMessage', 'The email and password do not match');
         }
       });
     },
