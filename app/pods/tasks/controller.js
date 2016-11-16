@@ -2,7 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   firebaseApp: Ember.inject.service(),
+
   searchTerm: '',
+
+  noTasks: Ember.computed('model.tasks.length', function() {
+    return this.get('model.tasks.length');
+  }),
+
   matchingTasks: Ember.computed('model.tasks.@each.title','searchTerm',
                                 'model.tasks.@each.description', 
     function() {
