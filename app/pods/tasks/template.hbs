@@ -13,7 +13,7 @@
     </div>
   </div>
   {{#each matchingTasks as |task|}}
-    <div class="well">
+    <div class="list-group-item">
       {{#if task.isEditing}}
         <button class="btn btn-primary pull-right" {{action "save" task}}>Save</button>
       {{else}}
