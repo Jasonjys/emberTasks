@@ -6,7 +6,7 @@ export default Ember.Route.extend({
   	return this.get('session').fetch().catch(() => {
   		console.log('ignore empty sessions');
   	}).then(() => {
-  		this.transitionTo('tasks');
+  		this.replaceWith('tasks');
   	});
   }
 });
