@@ -19,10 +19,9 @@ export default Ember.Controller.extend({
     });
   }),
 
-  taskNotFound: Ember.computed('model.tasks.[]', 'matchingTasks.[]', function() {
-    let tasksLength = this.get('model.tasks.length');
+  taskNotFound: Ember.computed('noTasks', 'matchingTasks.[]', function() {
     let matchTasksLength = this.get('matchingTasks.length');
-    return tasksLength !== 0 && matchTasksLength === 0;
+    return this.get('noTasks') && matchTasksLength === 0;
   }),
 
   actions: {
