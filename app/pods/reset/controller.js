@@ -18,9 +18,7 @@ export default Ember.Controller.extend({
     },
 
     hideMessage() {
-      if(this.get('sentSuccess')){
-        this.set('errorMessage', '');
-      }
+      this.set('message', '');
     }
   }
 });
