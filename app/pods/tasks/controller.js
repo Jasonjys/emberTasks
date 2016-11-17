@@ -19,6 +19,12 @@ export default Ember.Controller.extend({
     });
   }),
 
+  taskNotFound: Ember.computed('model.tasks.[]', 'matchingTasks.[]', function() {
+    let tasksLength = this.get('model.tasks.length')
+    let matchTasksLength = this.get('matchingTasks.length')
+    return tasksLength !== 0 && matchTasksLength === 0;
+  }),
+
   actions: {
     edit: function(task) {
       task.set('isEditing', true);
