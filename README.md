@@ -3,9 +3,15 @@
 Your tasks manager:
 https://embertasks-b34ae.firebaseapp.com
 
+## Introduction
+
+An ember appliction that allows user to sign up and sign in(or third party login) to the website using firebase authentication. User can add, delete and edit thier tasks. You can call it a todo list. The application is built using ember pods structure, so it is really easy to follow. 
+
 ## Thoughts
 
-* add location for each task
+* add location for each task(can have a toggle button to turn it on or off when user creates now task)
+* add checkbox and background color to show each task's current state. For example a checked task will have a backgrund color of green which means this task is done and an unchecked task will show a background color of red to indicate this task is still on going.
+* add count down timer for tasks
 
 ## Prerequisites
 
