@@ -12,6 +12,13 @@
       </form>
     </div>
   </div>
+  {{#if (eq matchingTasks.length 0)}}
+      <li class="list-group-item empty-list">
+      <div class="empty-message">
+        No Result Found.
+      </div>
+    </li>
+  {{/if}}
   {{#each matchingTasks as |task|}}
     <div class="list-group-item">
       {{#if task.isEditing}}
