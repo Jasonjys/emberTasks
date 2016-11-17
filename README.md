@@ -9,7 +9,7 @@ An ember appliction that allows user to sign up and sign in(or third party login
 
 ## Thoughts
 
-* add location for each task(can have a toggle button to turn it on or off when user creates now task)
+* add location for each task(can have a toggle button to turn it on or off when user creates new task)
 * add checkbox and background color to show each task's current state. For example a checked task will have a backgrund color of green which means this task is done and an unchecked task will show a background color of red to indicate this task is still on going.
 * add count down timer for tasks
 
