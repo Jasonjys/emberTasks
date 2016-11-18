@@ -33,16 +33,17 @@ export default Ember.Controller.extend({
       this.get('store').findRecord('user', user.uid).then((user) => {
         user.get('tasks').addObject(newTask);
         newTask.save().then(() => {
-          user.save();
+          user.save()
+          .then(() => {
+            this.setProperties({
+              'task.title': '',
+              'task.date': '',
+              'task.description': ''
+            });
+            this.transitionToRoute('tasks');
+          });
         });
       });
-
-      this.setProperties({
-        'task.title': '',
-        'task.date': '',
-        'task.description': ''
-      });
-      this.transitionToRoute('tasks');
     },
   }
 });
