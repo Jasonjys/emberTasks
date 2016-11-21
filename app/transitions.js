@@ -1,16 +1,30 @@
 export default function() {
-	this.transition(
-		this.hasClass('task-edit'),
-		this.toValue(false),
-		this.use('crossFade'),
-		this.reverse('crossFade')
-	);
-	this.transition(
-		this.matchSelector('.new-container'),
-	  this.use('toRight', {duration: 300})
-	);
-	this.transition(
-		this.matchSelector('.application-container'),
-	  this.use('toRight')
-	);
+  this.transition(
+    this.hasClass('task-edit'),
+    this.toValue(false),
+    this.use('crossFade'),
+    this.reverse('crossFade')
+  );
+  this.transition(
+    this.matchSelector('.new-container'),
+    this.use('toLeft', {duration: 300})
+  );
+  this.transition(
+    this.fromRoute('login'),
+    this.toRoute('tasks'),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  );
+  this.transition(
+    this.fromRoute('login'),
+    this.toRoute('signup'),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  );
+  this.transition(
+    this.fromRoute('login'),
+    this.toRoute('reset'),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  );
 }
