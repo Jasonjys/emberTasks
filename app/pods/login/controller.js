@@ -2,18 +2,31 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   isModalVisible: false,
+  // emailValidation: [{
+  //   message: 'Invalid email format',
+  //   validate: (inputValue) => {
+  //     let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  //     return emailPattern.test(inputValue);
+  //   }
+  // }],
   actions: {
+    hideEmailMessage(){
+      this.set('emailError', []);
+    },
+    hidePassMessage(){
+      this.set('passwordError', []);
+    },
     signIn(provider) {
-      this.set('badEmail', false);
-      this.set('badPassword', false);
-      console.log('in signIn function');
       let authPromise;
+      console.log('in signIn function');
+      const email = this.get('email');
+      const password = this.get('password');
       if (provider === 'password') {
         console.log('provider is password');
         authPromise = this.get('session').open('firebase', {
           provider: provider,
-          email: this.get('email'),
-          password: this.get('password')
+          email: email,
+          password: password
         });
       } else {
         authPromise = this.get('session').open('firebase', {
@@ -36,24 +49,18 @@ export default Ember.Controller.extend({
         console.log(result.currentUser.email);
       })
       .catch((error) => {
-        //debugger
+        console.log('error');
+        console.log(error);
         const errorCode = error.code;
+        console.log(errorCode)
+
         if(errorCode === 'auth/invalid-email'){
-        
-          this.set('badEmail', true);
-          //this.set('errorMessage', 'Invalid email format.');
+          this.set('emailError', ['Invalid email format']);
         } else {
-          this.set('isModalVisible', true);
-          // this.set('badPassword', true);
-          // this.set('errorMessage', 'The email and password do not match');
+          console.log('in else');
+          this.set('passwordError', ['The email and password do not match']);
         }
       });
     },
-
-    hideMessage() {
-      if(this.get('badEmail') || this.get('badPassword')){
-        this.set('errorMessage', '');
-      }
-    }
   }
 });

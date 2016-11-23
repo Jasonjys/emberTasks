@@ -1,4 +1,4 @@
-<div id="signupbox" style="margin-top:50px" class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+<div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
   <div class="panel panel-info">
     <div class="panel-heading">
       <div class="panel-title">Sign Up</div>
@@ -14,29 +14,20 @@
         </div>
 
         <div class="form-group">
-          <label for="email" class="col-md-3 control-label">Email</label>
-          <div class="col-md-8">
-            {{input input=(action 'hideMessage') type="text" class="form-control" value=email placeholder="Email Address"}}
-            {{#if badEmail}}
-              <small style="color: red;">{{errorMessage}}</small>
-            {{/if}}
+          <div class="col-md-offset-3 col-sm-offset-2 col-md-8">
+            {{paper-input label="E-mail" icon="email" required=true type="email" value=email customValidations=emailValidation onChange=(action (mut email))}}
           </div>
         </div>
 
         <div class="form-group">
-          <label for="password" class="col-md-3 control-label">Password</label>
-          <div class="col-md-8">
-            {{input input=(action 'hideMessage') type="password" class="form-control" value=password placeholder="Password"}}
-            {{#if badPassword}}
-              <small style="color: red;">{{errorMessage}}</small>
-            {{/if}}
+          <div class="col-md-offset-3 col-sm-offset-2 col-md-8">
+            {{paper-input label="Password" icon="lock" required=true type="password" value=password onChange=(action (mut password))}} 
           </div>
         </div>
 
         <div class="form-group">
-          <!-- Button -->                                        
-          <div class="col-md-offset-3 col-md-9">
-            <button {{action 'signUp'}} class="btn btn-info">Sign Up</button>
+          <div class="col-md-offset-3 col-sm-offset-3 col-sm-12 controls">
+            {{#paper-button primary=true raised=true onClick=(action "signUp" "password")}}sign up{{/paper-button}}
           </div>
         </div>
 
