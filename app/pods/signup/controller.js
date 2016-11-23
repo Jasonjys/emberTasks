@@ -3,6 +3,14 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	firebaseApp: Ember.inject.service(),
 
+  emailValidation: [{
+    message: 'Invalid email format.',
+    validate: (inputValue) => {
+      let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      return emailPattern.test(inputValue);
+    }
+  }],
+
   actions: {
     signUp() {
       this.set('badEmail', false);
