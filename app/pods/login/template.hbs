@@ -1,4 +1,4 @@
-<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
   <div class="panel panel-info" >
     <div class="panel-heading">
       <div class="panel-title">Sign In</div>
@@ -9,30 +9,18 @@
 
       <form id="loginform" class="form-horizontal" role="form">
 
-        <div style="margin-bottom: 25px" class="form-group">
-          <label for="email" class="col-md-3 control-label">Email</label>
-          <div class="col-md-8">
-            {{input input=(action 'hideMessage') type="text" class="form-control" value=email placeholder="email"}}
-            {{#if badEmail}}
-              <small style="color: red;">{{errorMessage}}</small>
-            {{/if}}
-          </div>
+        <div style="margin-bottom: 10px" class="form-group">
+          {{paper-input label="E-mail" icon="email" required=true type="email" value=customemail onChange=(action (mut customemail)) customValidations=emailValidation}}
         </div>
 
         <div style="margin-bottom: 25px" class="form-group">
-          <label for="email" class="col-md-3 control-label">Password</label>
-          <div class="col-md-8">
-            {{input input=(action 'hideMessage') type="password" class="form-control" value=password placeholder="password"}}
-            {{#if badPassword}}
-              <small style="color: red;">{{errorMessage}}</small>
-            {{/if}}
-          </div>
+          {{paper-input label="Password" icon="lock" required=true type="password" value=password onChange=(action (mut password))}} 
         </div>
 
         <div style="margin-top:10px" class="form-group">
-          <div class="col-md-offset-3 col-sm-12 controls">
-            <button {{action "signIn" "password"}} class="btn btn-success">Login</button>
-            <button {{action "signIn" "google"}} class="btn btn-info">Login with Google</button>
+          <div class="col-md-offset-2 col-sm-12 controls">
+            {{#paper-button accent=true raised=true onClick=(action "signIn" "password")}}Login{{/paper-button}}
+            {{#paper-button raised=true onClick=(action "signIn" "google")}}Login with Google{{/paper-button}}
           </div>
         </div>
 

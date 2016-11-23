@@ -1,6 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  emailValidation: [{
+    message: 'Invalid email format',
+    validate: (inputValue) => {
+      let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      return emailPattern.test(inputValue);
+    }
+  }],
+
   actions: {
     signIn(provider) {
       this.set('badEmail', false);
@@ -37,8 +45,10 @@ export default Ember.Controller.extend({
       .catch((error) => {
         const errorCode = error.code;
         if(errorCode === 'auth/invalid-email'){
+          debugger
+
           this.set('badEmail', true);
-          this.set('errorMessage', 'Invalid email format');
+          this.set('errorMessage', 'Invalid email format.');
         } else {
           this.set('badPassword', true);
           this.set('errorMessage', 'The email and password do not match');
