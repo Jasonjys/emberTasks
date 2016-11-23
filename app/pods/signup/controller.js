@@ -12,22 +12,20 @@ export default Ember.Controller.extend({
   }],
 
   actions: {
+    hideEmailMessage(){
+      this.set('emailError', []);
+    },
+
+    hidePassMessage(){
+      this.set('passwordError', []);
+    },
+
     signUp() {
       this.set('badEmail', false);
       this.set('badPassword', false);
       const auth = this.get('firebaseApp').auth();
       const email = this.get('email');
       const pass = this.get('password');
-
-      if(!email){
-        this.set('badEmail', true);
-        this.set('errorMessage', 'Email can not be empty');
-        return;
-      } else if (!pass) {
-        this.set('badPassword', true);
-        this.set('errorMessage', 'Password can not be empty');
-        return;
-      }
 
       auth.createUserWithEmailAndPassword(email, pass).then((userResponse) => {
         console.log('in createUserWithEmailAndPassword function');
@@ -45,20 +43,17 @@ export default Ember.Controller.extend({
           });
         });
       }).catch((error) => {
+        console.log('error: ', error)
         const errorCode = error.code;
         const errorMessage = error.message;
         if (errorCode === 'auth/email-already-in-use'){
-          this.set('badEmail', true);
-          this.set('errorMessage', errorMessage);
-        } else if (errorCode === 'auth/invalid-email'){
-          this.set('badEmail', true);
-          this.set('errorMessage', 'Invalid email format');
+          this.set('emailError', ['The email address is already in use by another account.']);
         } else if(errorCode === 'auth/argument-error'){
-          this.set('badEmail', true);
-          this.set('errorMessage', 'Email can not be empty');
+          this.set('emailError', ['Email can not be empty']);
+        } else if(errorCode === "auth/invalid-email"){
+          return;
         } else {
-          this.set('badPassword', true);
-          this.set('errorMessage', errorMessage);
+          this.set('passwordError', ['Password should be at least 6 characters']);
         }
       });
     },
