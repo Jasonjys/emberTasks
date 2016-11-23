@@ -56,12 +56,6 @@ export default Ember.Controller.extend({
           this.set('passwordError', ['Password should be at least 6 characters']);
         }
       });
-    },
-
-    hideMessage() {
-      if(this.get('badEmail') || this.get('badPassword')){
-        this.set('errorMessage', '');
-      }
     }
   }
 });
