@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  isModalVisible: false,
   actions: {
     signIn(provider) {
       this.set('badEmail', false);
@@ -35,15 +36,16 @@ export default Ember.Controller.extend({
         console.log(result.currentUser.email);
       })
       .catch((error) => {
+        //debugger
         const errorCode = error.code;
         if(errorCode === 'auth/invalid-email'){
-          debugger
-
+        
           this.set('badEmail', true);
-          this.set('errorMessage', 'Invalid email format.');
+          //this.set('errorMessage', 'Invalid email format.');
         } else {
-          this.set('badPassword', true);
-          this.set('errorMessage', 'The email and password do not match');
+          this.set('isModalVisible', true);
+          // this.set('badPassword', true);
+          // this.set('errorMessage', 'The email and password do not match');
         }
       });
     },

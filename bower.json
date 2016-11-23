@@ -7,6 +7,9 @@
     "firebase": "^3.0.0",
     "bootstrap": "~3.3.5",
     "hammer.js": "^2.0.8",
-    "matchMedia": "0.2.0"
+    "matchMedia": "0.2.0",
+    "chai-jquery": "^2.0.1",
+    "perfect-scrollbar": ">=0.6.7 <2.0.0",
+    "sinon-chai": "^2.8.0"
   }
 }
