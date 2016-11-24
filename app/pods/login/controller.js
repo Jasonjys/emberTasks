@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
     keyDownReceived(event){
       if(event.key === 'Enter'){
        // this.send('signIn', 'password');
-       this.actions.signIn.call(this, 'password')
+       this.actions.signIn.call(this, 'password');
       }
     },
     hideEmailMessage(){
@@ -58,7 +58,7 @@ export default Ember.Controller.extend({
         console.log('error');
         console.log(error);
         const errorCode = error.code;
-        console.log(errorCode)
+        console.log(errorCode);
 
         if(errorCode === 'auth/invalid-email'){
           this.set('emailError', ['Invalid email format']);

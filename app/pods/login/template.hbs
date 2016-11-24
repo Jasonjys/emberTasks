@@ -18,12 +18,12 @@
 
         <div style="margin-bottom: 5px" class="form-group">
           <div class="col-md-offset-3 col-sm-offset-2 col-md-8">
-            {{log errors}}
             {{paper-input label="Password" icon="lock" type="password" errors=passwordError value=password 
-            onKeyDown=(action "keyDownReceived") onFocus=(action 'hidePassMessage') onChange=(action (mut password))}} 
+            onKeyDown=(action "keyDownReceived") onFocus=(action 'hidePassMessage') onChange=(action (mut password))}}
+            {{frost-loading type='ring'}}
           </div>
         </div>
-
+        
         <div style="margin-top:5px" class="form-group">
           <div class="col-md-offset-2 col-sm-offset-2 col-sm-12 controls">
             {{#paper-button primary=true raised=true onClick=(action "signIn" "password")}}Login{{/paper-button}}
