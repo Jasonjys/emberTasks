@@ -10,6 +10,12 @@ export default Ember.Controller.extend({
   //   }
   // }],
   actions: {
+    keyDownReceived(event){
+      if(event.key === 'Enter'){
+       // this.send('signIn', 'password');
+       this.actions.signIn.call(this, 'password')
+      }
+    },
     hideEmailMessage(){
       this.set('emailError', []);
     },
