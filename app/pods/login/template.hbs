@@ -20,7 +20,9 @@
           <div class="col-md-offset-3 col-sm-offset-2 col-md-8">
             {{paper-input label="Password" icon="lock" type="password" errors=passwordError value=password 
             onKeyDown=(action "keyDownReceived") onFocus=(action 'hidePassMessage') onChange=(action (mut password))}}
-            {{frost-loading type='ring'}}
+            {{#if showLoading}}
+              {{frost-loading type='ring'}}
+            {{/if}}
           </div>
         </div>
         

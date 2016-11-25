@@ -27,6 +27,7 @@ export default Ember.Controller.extend({
       console.log('in signIn function');
       const email = this.get('email');
       const password = this.get('password');
+      this.set('showLoading', true);
       if (provider === 'password') {
         console.log('provider is password');
         authPromise = this.get('session').open('firebase', {
@@ -49,12 +50,14 @@ export default Ember.Controller.extend({
           }).save();
         })
         .then(() => {
+          this.set('showLoading', false);
           this.transitionToRoute('tasks');
         });
         console.log('session.open result:', result);
         console.log(result.currentUser.email);
       })
       .catch((error) => {
+        this.set('showLoading', false);
         console.log('error');
         console.log(error);
         const errorCode = error.code;

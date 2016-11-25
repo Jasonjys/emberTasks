@@ -45,7 +45,6 @@ export default Ember.Controller.extend({
       }).catch((error) => {
         console.log('error: ', error);
         const errorCode = error.code;
-        const errorMessage = error.message;
         if (errorCode === 'auth/email-already-in-use'){
           this.set('emailError', ['The email address is already in use by another account.']);
         } else if(errorCode === 'auth/argument-error'){

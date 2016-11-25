@@ -52,7 +52,6 @@
   left: initial;
   font-size: 14px;
 }
-
 .empty-list {
   min-height: 100px;
   text-align: center;
@@ -74,4 +73,7 @@
     }
   }
 }
-
+.frost-loading {
+  display: inline-block;
+  width: 30px;
+}
