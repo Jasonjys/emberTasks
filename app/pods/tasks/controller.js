@@ -4,6 +4,7 @@ export default Ember.Controller.extend({
   firebaseApp: Ember.inject.service(),
 
   searchTerm: '',
+  zoom: 17,
 
   noTasks: Ember.computed('model.tasks.length', function() {
     return this.get('model.tasks.length');

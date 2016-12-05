@@ -16,8 +16,6 @@ export default Ember.Route.extend({
           promise: this.get('store').findRecord('user', user.uid).then((result) => {
             console.log('tasks: ', result.get('tasks'));
             return result.get('tasks');
-          }, (error) => {
-            console.log('no user exist');
           })
         })
       };

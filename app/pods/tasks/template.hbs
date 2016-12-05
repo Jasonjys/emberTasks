@@ -49,6 +49,9 @@
           It is due <strong>{{moment-from-now task.date timeZone='Canada/Toronto'}}</strong>
         </h5>
         <p>{{task.description}}</p>
+        <p>Location: {{task.location}}</p>
+        {{log task.markers}}
+        {{g-maps lat=task.position.lat lng=task.position.lng zoom=zoom markers=task.markers}}
         <button {{action 'deleteTask' task.id}} class="btn btn-danger">Delete</button>
       {{/liquid-if}}
     </div>
