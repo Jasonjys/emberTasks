@@ -1,19 +1,10 @@
 {{#if session.isAuthenticated}}
   <form>
-    <div class="form-group">
-      <label>Title</label>
-      {{input type="text" class="form-control" value=task.title
-      placeholder="Add Task..."}}
-    </div>
-    <div class="form-group">
-      <label>Due Date</label>
-      {{input type="date" class="form-control" value=task.date
-      placeholder="mm/dd/yyyy"}}
-    </div>
+    {{paper-input flex=30 label="Title" value=task.title onChange=(action (mut task.title))}}
+    {{paper-input flex=true label="Due date" type="date" value=task.date onChange=(action (mut task.date))}}
      <div class="form-group">
-      <label>Description</label>
-      {{textarea type="text" class="form-control" value=task.description
-      placeholder="Describe Task..."}}
+      {{paper-input textarea=true block=true label="Description" passThru=(hash rows=4 maxRows=4)
+        value=task.description onChange=(action (mut task.description))}}
     </div>
     <div class="form-group">
       {{paper-switch label="Location" value=showAutocomplete onChange=(action (mut showAutocomplete))}}
