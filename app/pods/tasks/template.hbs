@@ -51,7 +51,10 @@
         <p>{{task.description}}</p>
         {{#if task.location}}
           <p>Location: {{task.location}}</p>
-          {{g-maps lat=task.position.lat lng=task.position.lng zoom=zoom markers=task.markers}}
+          {{paper-switch label="Google Map" value=task.showMap onChange=(action (mut task.showMap))}}
+          {{#if task.showMap}}
+            {{g-maps lat=task.position.lat lng=task.position.lng zoom=zoom markers=task.markers}}
+          {{/if}}
         {{/if}}
         <button {{action 'deleteTask' task.id}} class="btn btn-danger">Delete</button>
       {{/liquid-if}}
