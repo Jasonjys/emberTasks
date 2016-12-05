@@ -28,7 +28,7 @@ export default Ember.Controller.extend({
     return isValid;
   },
   actions: {
-    addTask: function() {
+    addTask() {
       if (!this.taskIsValid()) {
         alert("Missing task title or due date");
         return; 
@@ -76,7 +76,7 @@ export default Ember.Controller.extend({
         });
       });
     },
-    didUpdatePlace: function(attr){
+    didUpdatePlace(attr) {
       this.set('lat', attr.lat);
       this.set('lng', attr.lng);
       this.set('zoom', 17);

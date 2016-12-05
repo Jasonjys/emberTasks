@@ -16,9 +16,14 @@
       placeholder="Describe Task..."}}
     </div>
     <div class="form-group">
-      <label>Location: </label>
-      {{g-autocomplete value=task.location on-select=(action 'didUpdatePlace')}}
-      {{g-maps name="my-map" lat=lat lng=lng zoom=zoom markers=markers}}
+      {{paper-switch label="Location" value=showAutocomplete onChange=(action (mut showAutocomplete))}}
+      {{#if showAutocomplete}}
+        {{g-autocomplete class="autocomplete" size='45' value=task.location on-select=(action 'didUpdatePlace')}}
+      {{/if}}
+      {{paper-switch label="Google Map" value=showMap onChange=(action (mut showMap))}}
+      {{#if showMap}}
+        {{g-maps name="my-map" lat=lat lng=lng zoom=zoom markers=markers}}
+      {{/if}}
     </div>
     <button {{action 'addTask'}} class="btn btn-primary">Submit</button>
   </form>
