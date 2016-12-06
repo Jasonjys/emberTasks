@@ -21,12 +21,12 @@
   {{/if}}
   {{#each matchingTasks as |task|}}
     <div class="well">
+      {{#paper-button class="pull-right" warn=true raised=true onClick=(action "deleteTask" task.id)}}Delete{{/paper-button}}
       {{#if task.isEditing}}
         {{paper-button class="pull-right" raised=true label="Save" onClick=(action "save" task)}}
       {{else}}
         {{paper-button class="pull-right" raised=true label="Edit" onClick=(action "edit" task)}}
       {{/if}}
-      {{#paper-button class="pull-right" warn=true raised=true onClick=(action "deleteTask" task.id)}}Delete{{/paper-button}}
       {{#liquid-if task.isEditing class="task-edit"}}
         {{paper-input flex=30 required=true label="Title" value=task.title onChange=(action (mut task.title))}}
         {{paper-input flex=true label="Due date" type="date" value=task.dueDate onChange=(action (mut task.dueDate))}}
