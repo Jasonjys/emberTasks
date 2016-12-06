@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
   },
   taskIsValid: function() {
     var isValid = true;
-    ['task.title', 'task.date'].forEach(function(field) {
+    ['task.title', 'task.dueDate'].forEach(function(field) {
       if (this.get(field) === '' || Ember.typeOf(this.get(field)) === 'undefined') {
         isValid = false;
       }
@@ -30,7 +30,6 @@ export default Ember.Controller.extend({
   actions: {
     addTask() {
       if (!this.taskIsValid()) {
-        alert("Missing task title or due date");
         return; 
       }
 
@@ -48,7 +47,7 @@ export default Ember.Controller.extend({
       const showLocation = location ? true : false;
       var newTask = this.store.createRecord('task', {
         title: this.get('task.title'),
-        date: this.get('task.date'),
+        dueDate: this.get('task.dueDate'),
         description: description,
         location: location,
         position: {
@@ -70,7 +69,7 @@ export default Ember.Controller.extend({
           .then(() => {
             this.setProperties({
               'task.title': '',
-              'task.date': '',
+              'task.dueDate': '',
               'task.description': '',
               'task.location': '',
               'task.position': '',

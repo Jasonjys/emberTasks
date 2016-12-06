@@ -2,7 +2,7 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
 	title: DS.attr(),
-	date: DS.attr(),
+	dueDate: DS.attr(),
 	description: DS.attr(),
   location: DS.attr(),
   position: DS.attr(),

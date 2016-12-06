@@ -12,13 +12,13 @@ export default Ember.Controller.extend({
 
   matchingTasks: Ember.computed('model.tasks.@each.title','searchTerm',
                                 'model.tasks.@each.description',
-                                'model.tasks.@each.date', 
+                                'model.tasks.@each.dueDate', 
     function() {
       var searchTerm = this.get('searchTerm').toLowerCase();
       return this.get('model.tasks').filter(function(task) {
         return task.get('title').toLowerCase().indexOf(searchTerm) !== -1 || 
           task.get('description').toLowerCase().indexOf(searchTerm) !== -1 || 
-          task.get('date').toLowerCase().indexOf(searchTerm) !== -1;
+          task.get('dueDate').toLowerCase().indexOf(searchTerm) !== -1;
       });
     }),
 

@@ -26,9 +26,10 @@
       {{else}}
         {{paper-button class="pull-right" raised=true label="Edit" onClick=(action "edit" task)}}
       {{/if}}
+      {{#paper-button class="pull-right" warn=true raised=true onClick=(action "deleteTask" task.id)}}Delete{{/paper-button}}
       {{#liquid-if task.isEditing class="task-edit"}}
         {{paper-input flex=30 required=true label="Title" value=task.title onChange=(action (mut task.title))}}
-        {{paper-input flex=true label="Due date" type="date" value=task.date onChange=(action (mut task.date))}}
+        {{paper-input flex=true label="Due date" type="date" value=task.dueDate onChange=(action (mut task.dueDate))}}
         {{paper-switch label="Description" value=task.showDescription onChange=(action (mut task.showDescription))}}
         {{#if task.showDescription}}
           {{paper-input textarea=true block=true label="Description" passThru=(hash rows=3 maxRows=3)
@@ -44,9 +45,9 @@
         {{/if}}
       {{else}}
         <h3>{{task.title}}</h3>
-        <h4>Due: {{moment-format task.date timeZone='Canada/Toronto'}}</h4>
+        <h4>Due: {{moment-format task.dueDate timeZone='Canada/Toronto'}}</h4>
         <h5>
-          It is due <strong>{{moment-from-now task.date timeZone='Canada/Toronto'}}</strong>
+          It is due <strong>{{moment-from-now task.dueDate timeZone='Canada/Toronto'}}</strong>
         </h5>
         {{#if task.description}}
           <p>{{task.description}}</p>
@@ -58,7 +59,6 @@
             {{g-maps lat=task.position.lat lng=task.position.lng zoom=zoom markers=task.markers}}
           {{/if}}
         {{/if}}
-        <button {{action 'deleteTask' task.id}} class="btn btn-danger">Delete</button>
       {{/liquid-if}}
     </div>
   {{/each}}
