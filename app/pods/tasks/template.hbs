@@ -6,7 +6,7 @@
       <form class="search-form">
         <div class="form-group has-feedback">
         <label for="search" class="sr-only">Search</label>
-        {{input type="text" value=searchTerm class="form-control" placeholder="search "}}
+        {{input type="text" value=searchTerm class="form-control" placeholder="search"}}
         <span class="glyphicon glyphicon-search form-control-feedback"></span>
         </div>
       </form>
@@ -22,33 +22,35 @@
   {{#each matchingTasks as |task|}}
     <div class="well">
       {{#if task.isEditing}}
-        <button class="btn btn-primary pull-right" {{action "save" task}}>Save</button>
+        {{paper-button class="pull-right" raised=true label="Save" onClick=(action "save" task)}}
       {{else}}
-        <button class="btn btn-primary pull-right" {{action "edit" task}}>Edit</button>
+        {{paper-button class="pull-right" raised=true label="Edit" onClick=(action "edit" task)}}
       {{/if}}
-
       {{#liquid-if task.isEditing class="task-edit"}}
-        <div class="form-group">
-        <label>Title</label>
-        {{input type="text" class="form-control" value=task.title
-        placeholder="Add Task..."}}
-        </div>
-        <div class="form-group">
-          <label>Due Date</label>
-          {{input type="date" class="form-control" value=task.date}}
-        </div>
-        <div class="form-group">
-          <label>Description</label>
-          {{textarea type="text" class="form-control" value=task.description
-          placeholder="Describe Task..."}}
-        </div>
+        {{paper-input flex=30 required=true label="Title" value=task.title onChange=(action (mut task.title))}}
+        {{paper-input flex=true label="Due date" type="date" value=task.date onChange=(action (mut task.date))}}
+        {{paper-switch label="Description" value=task.showDescription onChange=(action (mut task.showDescription))}}
+        {{#if task.showDescription}}
+          {{paper-input textarea=true block=true label="Description" passThru=(hash rows=3 maxRows=3)
+            value=task.description onChange=(action (mut task.description))}}
+        {{/if}}
+        {{paper-switch label="Location" value=task.showLocation onChange=(action (mut task.showLocation))}}
+        {{#if task.showLocation}}
+          {{g-autocomplete class="autocomplete" size='60' value=task.location on-select=(action 'didUpdatePlace' task)}}
+        {{/if}}
+        {{paper-switch label="Google Map" value=task.showMap onChange=(action (mut task.showMap))}}
+        {{#if task.showMap}}
+          {{g-maps name="my-map" lat=task.position.lat lng=task.position.lng zoom=zoom markers=task.markers}}
+        {{/if}}
       {{else}}
         <h3>{{task.title}}</h3>
         <h4>Due: {{moment-format task.date timeZone='Canada/Toronto'}}</h4>
         <h5>
           It is due <strong>{{moment-from-now task.date timeZone='Canada/Toronto'}}</strong>
         </h5>
-        <p>{{task.description}}</p>
+        {{#if task.description}}
+          <p>{{task.description}}</p>
+        {{/if}}
         {{#if task.location}}
           <p>Location: {{task.location}}</p>
           {{paper-switch label="Google Map" value=task.showMap onChange=(action (mut task.showMap))}}

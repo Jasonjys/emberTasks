@@ -34,19 +34,30 @@ export default Ember.Controller.extend({
         return; 
       }
 
+      const description = this.get('showDescription') ? this.get('task.description') : null;
+      const location = this.get('showAutocomplete') ? this.get('location') : null;
+      const markers = this.get('showAutocomplete') ? [{
+          lat: this.get('lat'),
+          lng: this.get('lng')
+        }] : [{
+          lat: null,
+          lng: null
+        }];
+
+      const showDescription = description ? true : false;
+      const showLocation = location ? true : false;
       var newTask = this.store.createRecord('task', {
         title: this.get('task.title'),
         date: this.get('task.date'),
-        description: this.get('task.description'),
-        location: this.get('location'),
+        description: description,
+        location: location,
         position: {
           lat: this.get('lat'),
           lng: this.get('lng')
         },
-        markers: [{
-          lat: this.get('lat'),
-          lng: this.get('lng')
-        }],
+        markers: markers,
+        showDescription: showDescription,
+        showLocation: showLocation
       });
 
       const auth = this.get('firebaseApp').auth();
@@ -61,9 +72,12 @@ export default Ember.Controller.extend({
               'task.title': '',
               'task.date': '',
               'task.description': '',
-              'task.location':'',
-              'task.position':'',
-              'task.markers':'',
+              'task.location': '',
+              'task.position': '',
+              'task.markers': '',
+              'showDescription': false,
+              'showAutocomplete': false,
+              'showMap': false
             });
             this.transitionToRoute('tasks');
           });

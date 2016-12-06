@@ -7,6 +7,8 @@ export default DS.Model.extend({
   location: DS.attr(),
   position: DS.attr(),
   markers: DS.attr(),
+  showDescription: DS.attr(),
+  showLocation: DS.attr(),
 	created: DS.attr('string', {
 		defaultValue: function () {
 			return new Date();

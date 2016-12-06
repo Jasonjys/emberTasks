@@ -17,7 +17,7 @@
       <ul class="nav navbar-right">
         {{#if session.isAuthenticated}}
           <mediem style="color: white;">Logged in as {{session.currentUser.email}}</mediem>
-          {{#paper-button primary=true raised=true onClick=(action "signOut")}}Sign out{{/paper-button}}
+          {{#paper-button warn=true raised=true onClick=(action "signOut")}}Sign out{{/paper-button}}
         {{/if}}
       </ul>
     </div><!--/.nav-collapse -->
