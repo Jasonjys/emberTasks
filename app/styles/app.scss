@@ -81,3 +81,11 @@
 .autocomplete {
   display: block;
 }
+.task {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-group {
+  align-self: flex-end;
+}
