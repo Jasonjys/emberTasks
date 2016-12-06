@@ -10,8 +10,8 @@ export default Ember.Controller.extend({
   markers: Ember.A([
     {
       id: 'marker1',
-      lat: null,
-      lng: null,
+      lat: '',
+      lng: '',
     }
   ]),
 
@@ -33,14 +33,14 @@ export default Ember.Controller.extend({
         return; 
       }
 
-      const description = this.get('showDescription') ? this.get('task.description') : null;
-      const location = this.get('showAutocomplete') ? this.get('location') : null;
+      const description = this.get('showDescription') ? this.get('task.description') : '';
+      const location = this.get('showAutocomplete') ? this.get('location') : '';
       const markers = this.get('showAutocomplete') ? [{
           lat: this.get('lat'),
           lng: this.get('lng')
         }] : [{
-          lat: null,
-          lng: null
+          lat: '',
+          lng: ''
         }];
 
       const showDescription = description ? true : false;
