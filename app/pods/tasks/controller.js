@@ -38,6 +38,12 @@ export default Ember.Controller.extend({
       }
       if(!task.get('showLocation')) {
         task.set('location', '');
+        task.set(
+          'markers', [{
+            lat: null,
+            lng: null
+          }]
+        )
       }
       task.save();
     },
