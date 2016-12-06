@@ -33,9 +33,6 @@ export default Ember.Controller.extend({
         alert("Missing task title or due date");
         return; 
       }
-      console.log(this.get('task.location'))
-      console.log(this.get('lat'))
-      console.log(this.get('lng'))
 
       var newTask = this.store.createRecord('task', {
         title: this.get('task.title'),
@@ -51,9 +48,6 @@ export default Ember.Controller.extend({
           lng: this.get('lng')
         }],
       });
-
-      console.log(newTask)
-      console.log(newTask.title)
 
       const auth = this.get('firebaseApp').auth();
       var user = auth.currentUser;
@@ -80,9 +74,8 @@ export default Ember.Controller.extend({
       this.set('lat', attr.lat);
       this.set('lng', attr.lng);
       this.set('zoom', 17);
-      this.set('location',attr.place.formatted_address)
-      // console.log("map's lat",this.get('lat'));
-      // console.log("map's lng",this.get('lng'));
+      this.set('location',attr.place.formatted_address);
+
       let markersArray = this.get('markers');
       let marker = markersArray.objectAt(0);
       marker.lat = attr.lat;
