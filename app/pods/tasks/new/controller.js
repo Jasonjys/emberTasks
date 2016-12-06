@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
   firebaseApp: Ember.inject.service(),
 
   lat: 56.130366,
-  lng: -106.34677099999999,
+  lng: -106.3467709,
   zoom: 3,
   location: '',
   markers: Ember.A([
@@ -76,7 +76,14 @@ export default Ember.Controller.extend({
               'task.markers': '',
               'showDescription': false,
               'showAutocomplete': false,
-              'showMap': false
+              'showMap': false,
+              'markers': [{
+                lat: '',
+                lng: ''
+              }],
+              'zoom': 3,
+              'lat': 56.130366,
+              'lng': -106.3467709
             });
             this.transitionToRoute('tasks');
           });
