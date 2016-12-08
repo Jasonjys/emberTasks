@@ -51,18 +51,14 @@ export default Ember.Controller.extend({
       const auth = this.get('firebaseApp').auth();
       var user = auth.currentUser;
 
-      this.set('isConfirmVisible',true);
-      let close=confirm("are you sure?");
-      if(close){
-        this.get('store').findRecord('user', user.uid).then((user) => {
-          this.store.findRecord('task', id).then((task) => {
-            task.deleteRecord();
-            task.save().then(() => {
-              user.save();
-            });
+      this.get('store').findRecord('user', user.uid).then((user) => {
+        this.store.findRecord('task', id).then((task) => {
+          task.deleteRecord();
+          task.save().then(() => {
+            user.save();
           });
         });
-      }
+      });
     },
     didUpdatePlace(task, attr) {
       task.set('position.lat', attr.lat);
@@ -75,6 +71,16 @@ export default Ember.Controller.extend({
       marker.lng = attr.lng;
 
       markersArray.arrayContentDidChange(0);
-    }
+    },
+    openWarningDialog(/* param, event */) {
+      this.set('showWarningDialog', true);
+    },
+    closeWarningDialog(result, id) {
+      if (result === 'ok') {
+        this.send('deleteTask', id);
+      }
+      this.set('result', result);
+      this.set('showWarningDialog', false);
+    },
   }
 });

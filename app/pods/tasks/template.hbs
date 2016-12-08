@@ -1,4 +1,5 @@
 {{#if session.isAuthenticated}}
+
   {{liquid-outlet class="new-container"}}
   <h1>Tasks</h1>
   <div class="row">
@@ -60,9 +61,28 @@
         {{else}}
           {{paper-button raised=true label="Edit" onClick=(action "edit" task)}}
         {{/if}}
-        {{#paper-button warn=true raised=true onClick=(action "deleteTask" task.id)}}Delete{{/paper-button}}
+        {{#paper-button warn=true raised=true onClick=(action "openWarningDialog")}}Delete{{/paper-button}}
       </div>
     </div>
+
+    {{#if showWarningDialog}}
+      <form>
+        {{#paper-dialog fullscreen=fullscreen}}
+
+          {{#paper-dialog-content}}
+            <h2 class="md-title">Are you sure?</h2>
+          {{/paper-dialog-content}}
+
+          {{#paper-dialog-actions class="layout-row"}}
+            <span class="flex"></span>
+            {{#paper-button primary=true onClick=(action "closeWarningDialog" "cancel")}}Cancel{{/paper-button}}
+            {{#paper-button primary=true onClick=(action "closeWarningDialog" "ok" task.id)}}OK{{/paper-button}}
+          {{/paper-dialog-actions}}
+
+        {{/paper-dialog}}
+      </form>
+    {{/if}}
+
   {{/each}}
   {{#unless noTasks}}
     <li class="list-group-item empty-list">
@@ -71,4 +91,5 @@
       </div>
     </li>
   {{/unless}}
+
 {{/if}}
