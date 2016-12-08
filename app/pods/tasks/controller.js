@@ -43,7 +43,7 @@ export default Ember.Controller.extend({
             lat: '',
             lng: ''
           }]
-        )
+        );
       }
       task.save();
     },

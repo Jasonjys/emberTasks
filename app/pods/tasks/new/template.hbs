@@ -9,7 +9,7 @@
     {{/if}}
     {{paper-switch label="Location" value=showAutocomplete onChange=(action (mut showAutocomplete))}}
     {{#if showAutocomplete}}
-      {{g-autocomplete class="autocomplete" size='60' value=task.location on-select=(action 'didUpdatePlace')}}
+      {{g-autocomplete class="autocomplete" size='42' value=task.location on-select=(action 'didUpdatePlace')}}
     {{/if}}
     {{paper-switch label="Google Map" value=showMap onChange=(action (mut showMap))}}
     {{#if showMap}}
