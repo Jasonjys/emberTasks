@@ -61,8 +61,6 @@ export default Ember.Controller.extend({
       });
     },
     didUpdatePlace(task, attr) {
-      task.set('position.lat', attr.lat);
-      task.set('position.lng', attr.lng);
       task.set('location', attr.place.formatted_address);
 
       let markersArray = task.get('markers');

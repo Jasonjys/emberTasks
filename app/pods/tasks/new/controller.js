@@ -50,10 +50,6 @@ export default Ember.Controller.extend({
         dueDate: this.get('task.dueDate'),
         description: description,
         location: location,
-        position: {
-          lat: this.get('lat'),
-          lng: this.get('lng')
-        },
         markers: markers,
         showDescription: showDescription,
         showLocation: showLocation
@@ -72,7 +68,6 @@ export default Ember.Controller.extend({
               'task.dueDate': '',
               'task.description': '',
               'task.location': '',
-              'task.position': '',
               'task.markers': '',
               'showDescription': false,
               'showAutocomplete': false,
