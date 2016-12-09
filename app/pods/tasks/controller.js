@@ -62,13 +62,10 @@ export default Ember.Controller.extend({
     },
     didUpdatePlace(task, attr) {
       task.set('location', attr.place.formatted_address);
+      task.set('markers.firstObject.lat', attr.lat);
+      task.set('markers.firstObject.lng', attr.lng);
 
-      let markersArray = task.get('markers');
-      let marker = markersArray.objectAt(0);
-      marker.lat = attr.lat;
-      marker.lng = attr.lng;
-
-      markersArray.arrayContentDidChange(0);
+      task.get('markers').arrayContentDidChange(0);
     },
     openWarningDialog(/* param, event */) {
       this.set('showWarningDialog', true);

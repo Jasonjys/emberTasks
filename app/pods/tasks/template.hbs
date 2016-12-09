@@ -36,7 +36,12 @@
         {{/if}}
         {{paper-switch label="Google Map" value=task.showMap onChange=(action (mut task.showMap))}}
         {{#if task.showMap}}
-          {{g-maps name="my-map" lat=task.markers.0.lat lng=task.markers.0.lng zoom=zoom markers=task.markers}}
+          {{#if task.markers.0.lat}}
+            {{g-maps name="my-map" lat=task.markers.0.lat lng=task.markers.0.lng zoom=zoom markers=task.markers}}
+          {{else}}
+            {{g-maps name="my-map" lat=56.130366 lng=-106.3467709 zoom=3}}
+          {{/if}}
+
         {{/if}}
       {{else}}
         <h3>{{task.title}}</h3>

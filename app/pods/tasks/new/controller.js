@@ -38,10 +38,7 @@ export default Ember.Controller.extend({
       const markers = this.get('showAutocomplete') ? [{
           lat: this.get('lat'),
           lng: this.get('lng')
-        }] : [{
-          lat: '',
-          lng: ''
-        }];
+        }] : '';
 
       const showDescription = description ? true : false;
       const showLocation = location ? true : false;
