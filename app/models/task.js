@@ -5,6 +5,7 @@ export default DS.Model.extend({
 	dueDate: DS.attr(),
 	description: DS.attr(),
   location: DS.attr(),
+  zoom: DS.attr(),
   markers: DS.attr(),
   showDescription: DS.attr(),
   showLocation: DS.attr(),

@@ -5,7 +5,6 @@ export default Ember.Controller.extend({
 
   lat: 56.130366,
   lng: -106.3467709,
-  zoom: 3,
   location: '',
   markers: Ember.A([
     {
@@ -17,6 +16,7 @@ export default Ember.Controller.extend({
 
   init: function() {
     this.set('task',  Ember.Object.create());
+    this.set('task.zoom', 3);
   },
   taskIsValid: function() {
     var isValid = true;
@@ -47,6 +47,7 @@ export default Ember.Controller.extend({
         dueDate: this.get('task.dueDate') || '',
         description: description,
         location: location,
+        zoom: this.get('task.zoom'),
         markers: markers,
         showDescription: showDescription,
         showLocation: showLocation
@@ -65,6 +66,7 @@ export default Ember.Controller.extend({
               'task.dueDate': '',
               'task.description': '',
               'task.location': '',
+              'task.zoom': 3,
               'task.markers': '',
               'showDescription': false,
               'showAutocomplete': false,
@@ -73,7 +75,6 @@ export default Ember.Controller.extend({
                 lat: '',
                 lng: ''
               }],
-              'zoom': 3,
               'lat': 56.130366,
               'lng': -106.3467709
             });
@@ -85,7 +86,7 @@ export default Ember.Controller.extend({
     didUpdatePlace(attr) {
       this.set('lat', attr.lat);
       this.set('lng', attr.lng);
-      this.set('zoom', 17);
+      this.set('task.zoom', 17);
       this.set('location',attr.place.formatted_address);
 
       let markersArray = this.get('markers');

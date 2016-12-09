@@ -44,7 +44,7 @@
 
         {{#if task.showMap}}
           {{#if task.markers.0.lat}}
-            {{g-maps name="my-map" lat=task.markers.0.lat lng=task.markers.0.lng zoom=zoom markers=task.markers}}
+            {{g-maps name="my-map" lat=task.markers.0.lat lng=task.markers.0.lng zoom=task.zoom markers=task.markers}}
           {{else}}
             {{g-maps name="my-map" lat=56.130366 lng=-106.3467709 zoom=3}}
           {{/if}}
@@ -67,7 +67,7 @@
           <p>Location: {{task.location}}</p>
           {{paper-switch label="Google Map" value=task.showMap onChange=(action (mut task.showMap))}}
           {{#if task.showMap}}
-            {{g-maps lat=task.markers.0.lat lng=task.markers.0.lng zoom=zoom markers=task.markers}}
+            {{g-maps lat=task.markers.0.lat lng=task.markers.0.lng zoom=task.zoom markers=task.markers}}
           {{/if}}
         {{/if}}
 

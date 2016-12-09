@@ -13,7 +13,7 @@
     {{/if}}
     {{paper-switch label="Google Map" value=showMap onChange=(action (mut showMap))}}
     {{#if showMap}}
-      {{g-maps name="my-map" lat=lat lng=lng zoom=zoom markers=markers}}
+      {{g-maps name="my-map" lat=lat lng=lng zoom=task.zoom markers=markers}}
     {{/if}}
     {{#paper-button class="pull-right" primary=true raised=true onClick=(action "addTask")}}Submit{{/paper-button}}
   </div>
