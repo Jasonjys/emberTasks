@@ -44,7 +44,7 @@ export default Ember.Controller.extend({
       const showLocation = location ? true : false;
       var newTask = this.store.createRecord('task', {
         title: this.get('task.title'),
-        dueDate: this.get('task.dueDate'),
+        dueDate: this.get('task.dueDate') || '',
         description: description,
         location: location,
         markers: markers,
