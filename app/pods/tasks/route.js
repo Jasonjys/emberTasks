@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import DS from 'ember-data';
+//import DS from 'ember-data';
 
 export default Ember.Route.extend({
   firebaseApp: Ember.inject.service(),
