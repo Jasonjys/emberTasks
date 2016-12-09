@@ -22,36 +22,47 @@
   {{/if}}
   {{#each matchingTasks as |task|}}
     <div class="well task">
+
       {{#liquid-if task.isEditing class="task-edit"}}
+
         {{paper-input flex=30 required=true label="Title" value=task.title onChange=(action (mut task.title))}}
         {{paper-input flex=true label="Due date" type="date" value=task.dueDate onChange=(action (mut task.dueDate))}}
+
         {{paper-switch label="Description" value=task.showDescription onChange=(action (mut task.showDescription))}}
+
         {{#if task.showDescription}}
           {{paper-input textarea=true block=true label="Description" passThru=(hash rows=3 maxRows=3)
             value=task.description onChange=(action (mut task.description))}}
         {{/if}}
+
         {{paper-switch label="Location" value=task.showLocation onChange=(action (mut task.showLocation))}}
+
         {{#if task.showLocation}}
           {{g-autocomplete class="autocomplete" size='60' value=task.location on-select=(action 'didUpdatePlace' task)}}
         {{/if}}
         {{paper-switch label="Google Map" value=task.showMap onChange=(action (mut task.showMap))}}
+
         {{#if task.showMap}}
           {{#if task.markers.0.lat}}
             {{g-maps name="my-map" lat=task.markers.0.lat lng=task.markers.0.lng zoom=zoom markers=task.markers}}
           {{else}}
             {{g-maps name="my-map" lat=56.130366 lng=-106.3467709 zoom=3}}
           {{/if}}
-
         {{/if}}
+
       {{else}}
         <h3>{{task.title}}</h3>
-        <h4>Due: {{moment-format task.dueDate timeZone='Canada/Toronto'}}</h4>
-        <h5>
-          It is due <strong>{{moment-from-now task.dueDate timeZone='Canada/Toronto'}}</strong>
-        </h5>
+        {{#if task.dueDate}}
+          <h4>Due: {{moment-format task.dueDate timeZone='Canada/Toronto'}}</h4>
+          <h5>
+            It is due <strong>{{moment-from-now task.dueDate timeZone='Canada/Toronto'}}</strong>
+          </h5>
+        {{/if}}
+
         {{#if task.description}}
           <p>{{task.description}}</p>
         {{/if}}
+
         {{#if task.location}}
           <p>Location: {{task.location}}</p>
           {{paper-switch label="Google Map" value=task.showMap onChange=(action (mut task.showMap))}}
@@ -59,7 +70,9 @@
             {{g-maps lat=task.markers.0.lat lng=task.markers.0.lng zoom=zoom markers=task.markers}}
           {{/if}}
         {{/if}}
+
       {{/liquid-if}}
+
        <div class="button-group">
         {{#if task.isEditing}}
           {{paper-button raised=true label="Save" onClick=(action "save" task)}}
@@ -68,6 +81,7 @@
         {{/if}}
         {{#paper-button warn=true raised=true onClick=(action "openWarningDialog")}}Delete{{/paper-button}}
       </div>
+
     </div>
 
     {{#if showWarningDialog}}

@@ -1,7 +1,7 @@
 {{#if session.isAuthenticated}}
   <div class="layout-sm-column">
     {{paper-input flex=true required=true label="Title" value=task.title onChange=(action (mut task.title))}}
-    {{paper-input flex=true required=true label="Due date" type="date" value=task.dueDate onChange=(action (mut task.dueDate))}}
+    {{paper-input flex=true label="Due date" type="date" value=task.dueDate onChange=(action (mut task.dueDate))}}
     {{paper-switch label="Description" value=showDescription onChange=(action (mut showDescription))}}
     {{#if showDescription}}
       {{paper-input textarea=true block=true label="Description" passThru=(hash rows=3 maxRows=3)

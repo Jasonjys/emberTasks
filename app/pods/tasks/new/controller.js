@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
   },
   taskIsValid: function() {
     var isValid = true;
-    ['task.title', 'task.dueDate'].forEach(function(field) {
+    ['task.title'].forEach(function(field) {
       if (this.get(field) === '' || Ember.typeOf(this.get(field)) === 'undefined') {
         isValid = false;
       }
