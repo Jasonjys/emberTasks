@@ -19,7 +19,9 @@ export default Ember.Route.extend({
 
   actions: {
     willTransition(transition) {
-      if(transition.targetName === 'login' || transition.targetName === 'reset') {
+      const auth = this.get('firebaseApp').auth();
+      var user = auth.currentUser;
+      if(transition.targetName === 'login' && user) {
         transition.abort();
       }
     }
