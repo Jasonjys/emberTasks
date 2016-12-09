@@ -35,6 +35,10 @@ export default Ember.Controller.extend({
       task.set('isEditing', false);
       if(!task.get('showDescription')) {
         task.set('description', '');
+      }else{
+        if(!task.get('description')) {
+          task.set('showDescription', false);
+        }
       }
       if(!task.get('showLocation')) {
         task.set('location', '');
@@ -44,6 +48,10 @@ export default Ember.Controller.extend({
             lng: ''
           }]
         );
+      }else{
+        if(!task.get('location')) {
+          task.set('showLocation', false);
+        }
       }
       task.save();
     },
