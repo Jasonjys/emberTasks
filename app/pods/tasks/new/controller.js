@@ -33,9 +33,9 @@ export default Ember.Controller.extend({
         return; 
       }
 
-      const description = this.get('showDescription') ? this.get('task.description') : '';
-      const location = this.get('showAutocomplete') ? this.get('location') : '';
-      const markers = this.get('showAutocomplete') ? [{
+      const description = (this.get('showDescription') && this.get('task.description')) ? this.get('task.description') : '';
+      const location = (this.get('showAutocomplete') && this.get('task.location')) ? this.get('location') : '';
+      const markers = (this.get('showAutocomplete') && this.get('task.location')) ? [{
           lat: this.get('lat'),
           lng: this.get('lng')
         }] : '';
