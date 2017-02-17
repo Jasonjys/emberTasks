@@ -1,8 +1,5 @@
 # Ember-tasks
 
-Your tasks manager:
-https://embertasks-b34ae.firebaseapp.com
-
 ## Introduction
 
 An ember appliction that allows user to sign up and sign in(or third party login) to the website using firebase authentication. User can add, delete and edit thier tasks. You can call it a todo list. The application is built using ember pods structure, so it is really easy to follow. 
