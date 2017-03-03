@@ -55,16 +55,14 @@ export default Ember.Controller.extend({
       }
       task.save();
     },
-    deleteTask: function(id) {
+    deleteTask: function(task) {
       const auth = this.get('firebaseApp').auth();
       var user = auth.currentUser;
 
       this.get('store').findRecord('user', user.uid).then((user) => {
-        this.store.findRecord('task', id).then((task) => {
-          task.deleteRecord();
-          task.save().then(() => {
-            user.save();
-          });
+        task.deleteRecord();
+        task.save().then(() => {
+          user.save();
         });
       });
     },
@@ -78,9 +76,9 @@ export default Ember.Controller.extend({
     openWarningDialog(/* param, event */) {
       this.set('showWarningDialog', true);
     },
-    closeWarningDialog(result, id) {
+    closeWarningDialog(result, task) {
       if (result === 'ok') {
-        this.send('deleteTask', id);
+        this.send('deleteTask', task);
       }
       this.set('result', result);
       this.set('showWarningDialog', false);
