@@ -39,9 +39,9 @@ export default Ember.Controller.extend({
           lat: this.get('lat'),
           lng: this.get('lng')
         }] : '';
+      const showDescription = !!description;
+      const showLocation = !!location;
 
-      const showDescription = description ? true : false;
-      const showLocation = location ? true : false;
       var newTask = this.store.createRecord('task', {
         title: this.get('task.title'),
         dueDate: this.get('task.dueDate') || '',
