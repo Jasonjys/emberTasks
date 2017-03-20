@@ -1,4 +1,4 @@
-# See https://help.github.com/ignore-files/ for more about ignoring files.
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
 /dist
@@ -10,8 +10,13 @@
 
 # misc
 /.sass-cache
+/.idea
 /connect.lock
 /coverage/*
 /libpeerconnection.log
-npm-debug.log*
+npm-debug.log
 testem.log
+coverage.json
+.DS_Store
+/typings/*
+.vscode
